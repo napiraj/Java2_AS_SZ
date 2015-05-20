@@ -1,3 +1,4 @@
+import gui.MainPanel;
 import model.ColumnorientedDataLoader;
 import model.DataLoader;
 import model.DataModel;
@@ -62,10 +63,24 @@ public class Analyse {
 
 
             System.out.println(format.getName1() + format.getValue1() + "\n" + format.getName2()  + format.getValue2());
-            System.out.println("Maximum: " + format.getMax()+" Minimum: "+ format.getMin() + " Anzahl Elemente Liste1: "+ format.getNumberOfValue());
+            System.out.println("Maximum: " + format.getMax1()+" Minimum: "+ format.getMin1() + " Anzahl Elemente Liste1: "
+                    + format.getNumberOfValue1());
+
+            System.out.println("Maximum: " + format.getMax2()+" Minimum: "+ format.getMin2() + " Anzahl Elemente Liste1: "
+                    + format.getNumberOfValue2());
 
 
         }
+
+        JFrame frame= new JFrame();
+        frame.setSize(500, 500);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        MainPanel mainPanel = new MainPanel();
+        frame.add(mainPanel);
+
+        frame.setVisible(true);
+
+
 
     }
 

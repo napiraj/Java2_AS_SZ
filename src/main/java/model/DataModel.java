@@ -1,5 +1,6 @@
 package model;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Alexandra on 13.05.2015.
@@ -23,6 +24,8 @@ public class DataModel {
 
     }
 
+
+
     public String getName1(){
         return name;
     }
@@ -37,19 +40,30 @@ public class DataModel {
         return valueVariable2;
     }
 
-    public int getNumberOfValue(){
-        return valueVariable1.size() + valueVariable2.size();
+    public int getNumberOfValue1(){
+        return valueVariable1.size();
     }
 
-    public double getMin(){
-        double smallestValueVariable1= valueVariable1.get(0);
-        double smallestValueVariable2= valueVariable2.get(0);
-        for (int i= 1; i<valueVariable1.size();i++) {
+    public int getNumberOfValue2(){
+        return valueVariable2.size();
+    }
+
+    public double getMin1() {
+        double smallestValueVariable1 = valueVariable1.get(0);
+
+        for (int i = 1; i < valueVariable1.size(); i++) {
             if (valueVariable1.get(i) < smallestValueVariable1) {
                 smallestValueVariable1 = valueVariable1.get(i);
 
             }
+
+
         }
+        return smallestValueVariable1;
+    }
+    public double getMin2(){
+
+        double smallestValueVariable2= valueVariable2.get(0);
         for (int i= 1; i<valueVariable2.size();i++){
             if(valueVariable2.get(i)<smallestValueVariable2){
                 smallestValueVariable2=valueVariable2.get(i);
@@ -57,18 +71,26 @@ public class DataModel {
             }
 
         }
-        return smallestValueVariable1 + smallestValueVariable2;
+        return smallestValueVariable2;
     }
 
-    public double getMax(){
+
+    public double getMax1(){
         double largestValueVariable1= valueVariable1.get(0);
-        double largestValueVariable2= valueVariable2.get(0);
+
         for (int i= 1; i<valueVariable1.size();i++) {
             if (valueVariable1.get(i) > largestValueVariable1) {
                 largestValueVariable1 = valueVariable1.get(i);
 
             }
         }
+
+        return largestValueVariable1;
+    }
+
+    public double getMax2(){
+
+        double largestValueVariable2= valueVariable2.get(0);
         for (int i= 1; i<valueVariable2.size();i++){
             if(valueVariable2.get(i)>largestValueVariable2){
                 largestValueVariable2=valueVariable1.get(i);
@@ -76,8 +98,9 @@ public class DataModel {
             }
 
         }
-        return largestValueVariable1 + largestValueVariable2;
+        return largestValueVariable2;
     }
+
     public String toString(){
         return null;
     }
