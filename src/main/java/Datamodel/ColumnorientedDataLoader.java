@@ -37,13 +37,12 @@ public class ColumnorientedDataLoader implements DataLoader{
             valuesList1.add(valueParse1);
             valuesList2.add(valueParse2);
 
-            Variable variable1 = new Variable(variableName1, valuesList1);
+            Variable variable1 = new Variable(variableName1, variableName2, valuesList1, valuesList2);
             //Variable variable2 = new Variable();
 
         }
 
-        return new Variable(variableName1,valuesList1);
+        return new Variable(variableName1, variableName2, valuesList1, valuesList2);
     }
-
 
 }
