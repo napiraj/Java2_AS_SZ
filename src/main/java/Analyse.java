@@ -1,7 +1,7 @@
-import datamodel.ColumnorientedDataLoader;
-import datamodel.DataLoader;
-import datamodel.DataModel;
-import datamodel.LineorientedDataLoader;
+import model.ColumnorientedDataLoader;
+import model.DataLoader;
+import model.DataModel;
+import model.LineorientedDataLoader;
 
 import javax.swing.*;
 import java.io.File;
