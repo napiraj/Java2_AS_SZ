@@ -61,13 +61,10 @@ public class Analyse {
             DataModel format= loader.loadDataModel(selectedFile);
 
 
-            System.out.println(format.getName() + format.getWerte());
+            System.out.println(format.getName1() + format.getValue1() + "\n" + format.getName2()  + format.getValue2());
 
 
         }
-
-
-
 
     }
 
