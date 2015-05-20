@@ -62,6 +62,7 @@ public class Analyse {
 
 
             System.out.println(format.getName1() + format.getValue1() + "\n" + format.getName2()  + format.getValue2());
+            System.out.println("Maximum: " + format.getMax()+" Minimum: "+ format.getMin() + " Anzahl Elemente Liste1: "+ format.getNumberOfValue());
 
 
         }

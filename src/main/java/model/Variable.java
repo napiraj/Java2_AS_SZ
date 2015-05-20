@@ -1,4 +1,5 @@
 package model;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 /**
@@ -18,4 +19,6 @@ public class Variable  extends DataModel{
         valuesOfTheClass1 = valueVariable1;
         valuesOfTheClass2= valueVariable2;
     }
+
+
 }
