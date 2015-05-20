@@ -1,7 +1,7 @@
-package Datamodel;
+package datamodel;
 
 import java.io.File;
-import java.util.ArrayList;
+
 /**
  * Created by Alexandra on 12.05.2015.
  */

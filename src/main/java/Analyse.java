@@ -1,13 +1,11 @@
-import Datamodel.ColumnorientedDataLoader;
-import Datamodel.DataLoader;
-import Datamodel.DataModel;
-import Datamodel.LineorientedDataLoader;
-import Datamodel.Variable;
+import datamodel.ColumnorientedDataLoader;
+import datamodel.DataLoader;
+import datamodel.DataModel;
+import datamodel.LineorientedDataLoader;
 
 import javax.swing.*;
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
