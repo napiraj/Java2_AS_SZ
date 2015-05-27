@@ -9,7 +9,7 @@ public class DataModel {
     private String name;
     private String name2;
 
-    private ArrayList<Double> valueVariable1;
+    private static ArrayList<Double> valueVariable1;
     private ArrayList<Double> valueVariable2;
 
 
@@ -33,7 +33,7 @@ public class DataModel {
         return name2;
     }
 
-    public ArrayList getValue1(){
+    public static ArrayList getValue1(){
         return valueVariable1;
     }
     public ArrayList getValue2(){

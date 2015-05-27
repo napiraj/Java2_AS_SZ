@@ -10,25 +10,30 @@ import java.util.List;
  */
 public class Histogram extends JPanel{
 
-    private final ArrayList<Double> values;
+    private ArrayList<Double> values;
+    private double classesOfValue;
 
-    public Histogram(ArrayList<Double> values) {
+    public Histogram(ArrayList values) {
         this.values = values;
+        this.classesOfValue = 0;
     }
+
 
     @Override
     protected void paintComponent(Graphics g) {
-        int barWidth = getWidth() / values.size();
+        double classesOfValue = Math.round((double) ((values.size() /(Math.sqrt(values.size())))));
+
+        int barWidth = (int) (getWidth() / classesOfValue); //width = Breite, Methode holt sich die min. Breite des Frame + teilt sie durch Arraygrösse
         for (int i = 0; i < values.size(); i++) {
             double value = values.get(i);
             int barHeight = (int) (value / 100 * getHeight());
 
-            int x = i * barWidth;
+            int x = (int) ((int) i * barWidth);
             int y = getHeight() - barHeight;
 
-            g.setColor(Color.ORANGE);
+            g.setColor(Color.BLUE);
             g.fillRect(x, y, barWidth, barHeight);
-            g.setColor(Color.YELLOW);
+            g.setColor(Color.BLUE);
             g.drawRect(x, y, barWidth, barHeight);
         }
     }
