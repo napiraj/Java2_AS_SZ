@@ -19,8 +19,7 @@ public class ColumnorientedDataLoader implements DataLoader{
         } catch (FileNotFoundException e) {
             return null;
         }
-        double valueParse1;
-        double valueParse2;
+
         String variableName1=" ";
         ArrayList<Double> valuesList1=new ArrayList<Double>();
         ArrayList<Double> valuesList2= new ArrayList<Double>();
@@ -32,17 +31,15 @@ public class ColumnorientedDataLoader implements DataLoader{
         while(inputScanner.hasNextLine()) {
             String valueRead1 = inputScanner.next();
             String valueRead2= inputScanner.next();
-            valueParse1 = Double.parseDouble(valueRead1);
-            valueParse2= Double.parseDouble(valueRead2);
-            valuesList1.add(valueParse1);
-            valuesList2.add(valueParse2);
+            valuesList1.add(Double.parseDouble(valueRead1));
+            valuesList2.add(Double.parseDouble(valueRead2));
 
             Variable variable1 = new Variable(variableName1, variableName2, valuesList1, valuesList2);
             //Variable variable2 = new Variable();
 
         }
 
-        return new Variable(variableName1, variableName2, valuesList1, valuesList2);
+        return new DataModel(variableName1, variableName2, valuesList1, valuesList2);
     }
 
 }

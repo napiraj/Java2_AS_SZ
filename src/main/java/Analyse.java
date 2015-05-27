@@ -1,3 +1,4 @@
+import gui.ControlFrame;
 import gui.MainPanel;
 import model.ColumnorientedDataLoader;
 import model.DataLoader;
@@ -72,12 +73,13 @@ public class Analyse {
 
         }
 
-        JFrame frame= new JFrame();
-        frame.setSize(500, 500);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        JFrame frame= new ControlFrame();
+        JFrame.setDefaultLookAndFeelDecorated(true);
+
         MainPanel mainPanel = new MainPanel();
         frame.add(mainPanel);
 
+        frame.pack(); //bin nicht sicher, was das macht
         frame.setVisible(true);
 
 
