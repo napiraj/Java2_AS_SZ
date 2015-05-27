@@ -28,7 +28,7 @@ public class MainPanel extends JPanel {
 
         for (int a = 0; a < values.size(); a++)
         {
-            values.add((Double) DataModel.getValue1().get(a));
+            values.add((Double) DataModel.getVariableX().get(a));
         }
 
         for (int i = 0; i < xasi.size(); i++)

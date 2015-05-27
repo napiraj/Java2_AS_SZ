@@ -5,14 +5,14 @@ import java.util.ArrayList;
 /**
  * Created by Alexandra on 13.05.2015.
  */
-public class Variable  extends DataModel{
+public class Variable {
     private String name;
 
     private ArrayList<Double> values;
 
     public Variable(String name, ArrayList<Double> valueVariable) {
-        super(name, values);
-        name=name;
+
+        name= name;
 
         values= valueVariable;
     }

@@ -6,12 +6,12 @@ import java.awt.*;
 /**
  * Created by Bina on 25.05.2015.
  */
-public class ControlFrame extends JFrame{
+public class MainFrame extends JFrame{
 
     private final int FRAME_WIDTH = 200;
     private final int FRAME_HEIGHT = 200;
 
-    public ControlFrame()
+    public MainFrame()
 
     {
         setMinimumSize(new Dimension(FRAME_WIDTH, FRAME_HEIGHT));

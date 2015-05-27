@@ -36,6 +36,8 @@ public class LineorientedDataLoader implements DataLoader {
 
         String separator= inputScanner.nextLine();
         ArrayList<String> separatedLine1= new ArrayList<String>();
+        Variable variable1=null;
+        Variable variable2= null;
 
 
         while(inputScanner.hasNextLine()){
@@ -47,11 +49,14 @@ public class LineorientedDataLoader implements DataLoader {
             for(int i=0; i<lineVariable2.length;i++) {
                 valuesList2.add(Double.parseDouble(lineVariable2[i]));
             }
+            variable1 = new Variable(variableName1, valuesList1);
+            variable2= new Variable(variableName2, valuesList2);
+
 
         }
 
 
-        return new DataModel(variableName1, variableName2, valuesList1, valuesList2);
+        return new DataModel(variable1,variable2);
     }
 
 

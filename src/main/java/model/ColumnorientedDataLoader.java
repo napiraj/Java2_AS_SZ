@@ -23,6 +23,8 @@ public class ColumnorientedDataLoader implements DataLoader{
         String variableName1=" ";
         ArrayList<Double> valuesList1=new ArrayList<Double>();
         ArrayList<Double> valuesList2= new ArrayList<Double>();
+        Variable variable1=null;
+        Variable variable2=null;
 
 
         String line = inputScanner.nextLine();
@@ -34,12 +36,14 @@ public class ColumnorientedDataLoader implements DataLoader{
             valuesList1.add(Double.parseDouble(valueRead1));
             valuesList2.add(Double.parseDouble(valueRead2));
 
-            Variable variable1 = new Variable(variableName1, variableName2, valuesList1, valuesList2);
+            variable1 = new Variable(variableName1, valuesList1);
+            variable2= new Variable(variableName2, valuesList2);
             //Variable variable2 = new Variable();
+
 
         }
 
-        return new DataModel(variableName1, variableName2, valuesList1, valuesList2);
+        return new DataModel(variable1,variable2);
     }
 
 }
