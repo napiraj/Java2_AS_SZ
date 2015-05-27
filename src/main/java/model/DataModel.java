@@ -1,86 +1,60 @@
 package model;
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by Alexandra on 13.05.2015.
  */
 public class DataModel {
-    private String name;
-    private String name2;
 
-    private ArrayList<Double> valueVariable1;
-    private ArrayList<Double> valueVariable2;
-
+    private ArrayList<String> ListOfnamesOfVariable;
+    private double countVariables;
+    private ArrayList<Double> valuesOfVariable;
 
 
-    public DataModel(String name, String name2, ArrayList<Double> valueVariable1, ArrayList<Double> valueVariable2){
-        this.name=name;
-        this.name2=name2;
-        this.valueVariable1 = valueVariable1;
-        this.valueVariable2=valueVariable2;
-
-
+    public DataModel(ArrayList<String> nameOfVariable, double countVariables, ArrayList<Double> valuesOfVariable){
+        this.ListOfnamesOfVariable = nameOfVariable;
+        this.countVariables = countVariables;
+        this.valuesOfVariable = valuesOfVariable;
 
     }
 
 
-
-    public String getName1(){
-        return name;
+    public ArrayList<String> getVariableName()
+    {
+        return this.ListOfnamesOfVariable;
     }
-    public String getName2(){
-        return name2;
-    }
-
-    public ArrayList getValue1(){
-        return valueVariable1;
-    }
-    public ArrayList getValue2(){
-        return valueVariable2;
+    public ArrayList<Double> getValues(String whichVariable)
+    {
+        return valuesOfVariable;
     }
 
-    public int getNumberOfValue1(){
-        return valueVariable1.size();
+    public double getCountVariables(){
+        return countVariables;
     }
 
-    public int getNumberOfValue2(){
-        return valueVariable2.size();
+    public int getNumberOfValues(String whichVariable){
+        return valuesOfVariable.size();
     }
 
-    public double getMin1() {
-        double smallestValueVariable1 = valueVariable1.get(0);
+    public double getMin(String whichVariable) {
+        double smallestValueVariable1 = valuesOfVariable.get(0);
 
-        for (int i = 1; i < valueVariable1.size(); i++) {
-            if (valueVariable1.get(i) < smallestValueVariable1) {
-                smallestValueVariable1 = valueVariable1.get(i);
+        for (int i = 1; i < valuesOfVariable.size(); i++) {
+            if (valuesOfVariable.get(i) < smallestValueVariable1) {
+                smallestValueVariable1 = valuesOfVariable.get(i);
 
             }
-
-
         }
         return smallestValueVariable1;
-    }
-    public double getMin2(){
 
-        double smallestValueVariable2= valueVariable2.get(0);
-        for (int i= 1; i<valueVariable2.size();i++){
-            if(valueVariable2.get(i)<smallestValueVariable2){
-                smallestValueVariable2=valueVariable2.get(i);
-
-            }
-
-        }
-        return smallestValueVariable2;
     }
 
+    public double getMax(String whichVariable){
+        double largestValueVariable1= valuesOfVariable.get(0);
 
-    public double getMax1(){
-        double largestValueVariable1= valueVariable1.get(0);
-
-        for (int i= 1; i<valueVariable1.size();i++) {
-            if (valueVariable1.get(i) > largestValueVariable1) {
-                largestValueVariable1 = valueVariable1.get(i);
+        for (int i= 1; i<valuesOfVariable.size();i++) {
+            if (valuesOfVariable.get(i) > largestValueVariable1) {
+                largestValueVariable1 = valuesOfVariable.get(i);
 
             }
         }
@@ -88,18 +62,6 @@ public class DataModel {
         return largestValueVariable1;
     }
 
-    public double getMax2(){
-
-        double largestValueVariable2= valueVariable2.get(0);
-        for (int i= 1; i<valueVariable2.size();i++){
-            if(valueVariable2.get(i)>largestValueVariable2){
-                largestValueVariable2=valueVariable1.get(i);
-
-            }
-
-        }
-        return largestValueVariable2;
-    }
 
     public String toString(){
         return null;
