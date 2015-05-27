@@ -18,7 +18,8 @@ import java.util.List;
 public class MainPanel extends JPanel {
     public MainPanel() {
         ArrayList<Double> values= new ArrayList<Double>();
-        values.add(DataModel.getValue1());
+        values= DataModel.getValue1();
+        values.add(getValue1());
         Histogram drawingPanel = new Histogram(values);
         setLayout(new BorderLayout());
         add(drawingPanel);
