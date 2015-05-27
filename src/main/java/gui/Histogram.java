@@ -3,7 +3,6 @@ package gui;
 import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by Alexandra on 20.05.2015.
