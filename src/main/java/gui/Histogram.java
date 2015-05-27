@@ -1,5 +1,8 @@
 package gui;
 
+import model.HistogramModel;
+import model.Variable;
+
 import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
@@ -9,21 +12,22 @@ import java.util.ArrayList;
  */
 public class Histogram extends JPanel{
 
-    private ArrayList<Double> values;
-    private double classesOfValue;
 
-    public Histogram(ArrayList values) {
-        this.values = values;
-        this.classesOfValue = 0;
+    private HistogramModel histogramModel;
+
+    public Histogram(HistogramModel histogramModel) {
+
+
+        this.histogramModel = histogramModel;
     }
 
 
-    @Override
+   /* @Override
     protected void paintComponent(Graphics g) {
         double classesOfValue = Math.round((double) ((values.size() /(Math.sqrt(values.size())))));
 
         int barWidth = (int) (getWidth() / classesOfValue); //width = Breite, Methode holt sich die min. Breite des Frame + teilt sie durch Arraygrösse
-        for (int i = 0; i < values.size(); i++) {
+        for (int i = 0; i < histogramModel; i++) {
             double value = values.get(i);
             int barHeight = (int) (value / 100 * getHeight());
 
@@ -35,7 +39,7 @@ public class Histogram extends JPanel{
             g.setColor(Color.BLUE);
             g.drawRect(x, y, barWidth, barHeight);
         }
-    }
+    } */
 
 }
 

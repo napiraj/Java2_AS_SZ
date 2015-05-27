@@ -43,7 +43,6 @@ public class Analyse {
             System.out.println("hier kommt das spaltenorientiertes java programm rein");
 
             loader= new ColumnorientedDataLoader();
-            System.out.println(loader);
 
 
 
@@ -57,22 +56,19 @@ public class Analyse {
             loader = new LineorientedDataLoader();
 
         }
+        DataModel dataModel=null;
 
         if( loader != null)
         {
-            DataModel dataModel= loader.loadDataModel(selectedFile);
+            dataModel= loader.loadDataModel(selectedFile);
 
 
             System.out.println(dataModel.getVariableX() + " " + dataModel.getVariableY());
-        }
+    }
 
-        JFrame frame= new MainFrame();
-        JFrame.setDefaultLookAndFeelDecorated(true);
+    JFrame frame= new MainFrame(dataModel);
 
-        MainPanel mainPanel = new MainPanel();
-        frame.add(mainPanel);
 
-        frame.pack(); //bin nicht sicher, was das macht
         frame.setVisible(true);
 
 

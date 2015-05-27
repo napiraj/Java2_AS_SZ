@@ -38,7 +38,7 @@ public class ColumnorientedDataLoader implements DataLoader{
 
             variable1 = new Variable(variableName1, valuesList1);
             variable2= new Variable(variableName2, valuesList2);
-            //Variable variable2 = new Variable();
+
 
 
         }

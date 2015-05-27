@@ -1,6 +1,9 @@
 package gui;
 
 import model.DataModel;
+import model.HistogramModel;
+import model.Variable;
+
 import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
@@ -11,43 +14,48 @@ import java.util.ArrayList;
  * Created by Alexandra on 20.05.2015.
  */
 public class MainPanel extends JPanel {
-    public MainPanel() {
+    public MainPanel(DataModel dataModel) {
+
+
 
         this.setLayout(new BorderLayout());
-        this.setBackground(Color.WHITE);
+        this.setBackground(Color.GREEN);
+
 
         JLabel titleHistogram = new JLabel("VariableName ");
         this.add(titleHistogram, BorderLayout.EAST);
         JLabel titleScatterPlot = new JLabel("ScatterPlot: ");
         this.add(titleScatterPlot, BorderLayout.SOUTH);
 
-
-        ArrayList<Double> values= new ArrayList<Double>();
-        ArrayList<Double> xasi = new ArrayList<Double>();
-        ArrayList<Double> yaxi = new ArrayList<Double>();
-
-        for (int a = 0; a < values.size(); a++)
-        {
-            values.add((Double) DataModel.getVariableX().get(a));
-        }
-
-        for (int i = 0; i < xasi.size(); i++)
-        {
-            xasi.add(values.get(i));
-        }
-
-        for (int b = 0; b < xasi.size(); b++)
-        {
-            xasi.add(values.get(b));
-        }
-
-        Histogram drawingPanel = new Histogram(values);
-        setLayout(new BorderLayout());
-        add(drawingPanel);
+        JPanel scatterPanel= new JPanel();
+        scatterPanel.setLayout(new BoxLayout(scatterPanel, BoxLayout.PAGE_AXIS));
+        scatterPanel.setBackground(Color.GRAY);
+        add(scatterPanel, BorderLayout.CENTER);
 
 
-        ScatterPlot drawingScatterPlot = new ScatterPlot(xasi, yaxi);
+       ScatterPlot drawingScatterPlot = new ScatterPlot(dataModel.getVariableX(), dataModel.getVariableY());
+        scatterPanel.add(drawingScatterPlot);
 
-        add(drawingScatterPlot);
+        JPanel histoPanel= new JPanel();
+        histoPanel.setLayout(new BoxLayout(histoPanel, BoxLayout.LINE_AXIS));
+        histoPanel.setBackground(Color.BLACK);
+        scatterPanel.add(histoPanel);
+
+
+
+        HistogramModel histogramModel = new HistogramModel();
+        Histogram drawingPanel = new Histogram(histogramModel);
+        drawingPanel.setBackground(Color.CYAN);
+        Histogram drawingPane2 = new Histogram(histogramModel);
+        drawingPane2.setBackground(Color.RED);
+
+        histoPanel.add(drawingPanel);
+        histoPanel.add(drawingPane2);
+
+
+
+
+
+
     }
 }
