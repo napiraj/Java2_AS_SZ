@@ -23,12 +23,18 @@ public class LineorientedDataLoader implements DataLoader {
         double valueParse2;
         double numberOfVariables;
         String variableName1 = " ";
+        String variableName2 = " ";
+        ArrayList<String> allVariables = new ArrayList<String>();
         ArrayList<Double> valuesList1 = new ArrayList<Double>();
         ArrayList<Double> valuesList2 = new ArrayList<Double>();
         String line = inputScanner.nextLine();
         numberOfVariables=Double.parseDouble(line);
         variableName1= inputScanner.nextLine();
-        String variableName2= inputScanner.nextLine();
+        variableName2= inputScanner.nextLine();
+
+        allVariables.add(variableName1);
+        allVariables.add(variableName2);
+
         String separator= inputScanner.nextLine();
         ArrayList<String> separatedLine1= new ArrayList<String>();
 
@@ -43,23 +49,19 @@ public class LineorientedDataLoader implements DataLoader {
                 valuesList2.add(Double.parseDouble(lineVariable2[i]));
             }
 
-
-
         }
 
+        ArrayList<Double> valuesOfVariable = new ArrayList<Double>();
+
+        for (int i = 0; i < valuesList1.size(); i++){
+            valuesOfVariable.add(valuesList1.get(i));}
+
+        for (int i = 0; i < valuesList2.size(); i++){
+            valuesOfVariable.add(valuesList2.get(i));}
 
 
-
-
-
-
-
-
-
-
-
-
-        return new Variable(variableName1, variableName2, valuesList1, valuesList2);
+       // return new Variable(variableName1, variableName2, valuesList1, valuesList2);
+        return new DataModel(allVariables, numberOfVariables, valuesOfVariable);
     }
 
 
