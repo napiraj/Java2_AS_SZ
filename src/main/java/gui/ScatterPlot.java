@@ -40,14 +40,22 @@ public class ScatterPlot extends JPanel{
 
         variable1=xaxis.getValue();
         variable2=yaxis.getValue();
+        double min= yaxis.getMin();
+        double max= yaxis.getMax();
 
-        double width=getWidth();
-        double height= getHeight();
+        double radius= 10;
+        double width=getWidth()-2*radius;
+        double panelHeight=getHeight();
+        double height= (max-min)+ 2*radius;
+        double coefficient= width/height;
+
+
 
         for( int i = 0; i< variable1.size();i++ ){
-            double value1=variable1.get(i);
-            double value2= variable2.get(i);
-            g.fillOval((int)(value1),(int) (value2), 10, 10);
+
+            double value1=((panelHeight-variable1.get(i))*coefficient);
+            double value2= (panelHeight-variable2.get(i))*coefficient;
+            g.fillOval((int)(value1),(int) (value2),(int) radius,(int) radius);
             g.setColor(Color.BLUE);
 
         }
