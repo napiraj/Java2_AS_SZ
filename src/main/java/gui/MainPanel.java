@@ -19,6 +19,7 @@ public class MainPanel extends JPanel {
     private JPanel scatterPanel;
     private JPanel histoPanel;
     private HistogramModel histogramModel;
+    private HistogramModel histogramModel1;
     private Histogram drawingPanel;
     private Histogram drawingPane2;
     private ScatterPlot drawingScatterPlot;
@@ -50,6 +51,7 @@ public class MainPanel extends JPanel {
         scatterPanel= new JPanel();
         scatterPanel.setLayout(new BoxLayout(scatterPanel, BoxLayout.PAGE_AXIS));
         scatterPanel.setBackground(Color.GRAY);
+        scatterPanel.setBorder(BorderFactory.createLineBorder(Color.black));
         scatterPanel.add(titleScatterPlot);
         add(scatterPanel, BorderLayout.CENTER);
 
@@ -73,11 +75,12 @@ public class MainPanel extends JPanel {
                 selectedSize = (Integer) pointSize.getSelectedItem();
                 drawingScatterPlot.setDotSize(selectedSize);
                 repaint();
-            }});
+            }
+        });
 
         buttonPanel.add(pointSize);
 
-        lineButton = new JButton("Line");
+       lineButton = new JButton("Line");
 
         lineButton.addActionListener(new ActionListener() {
             @Override
@@ -91,20 +94,23 @@ public class MainPanel extends JPanel {
 
         buttonPanel.add(lineButton);
 
+
         histoPanel= new JPanel();
         histoPanel.setLayout(new BoxLayout(histoPanel, BoxLayout.LINE_AXIS));
-        histoPanel.setBackground(Color.BLACK);
+        histoPanel.setBorder(BorderFactory.createLineBorder(Color.black));
+        histoPanel.setBackground(Color.YELLOW);
         scatterPanel.add(histoPanel);
 
 
         // Histogram Valriable 1
-        histogramModel = new HistogramModel();
+        histogramModel = new HistogramModel(dataModel.getVariableX());
         drawingPanel = new Histogram(histogramModel);
         drawingPanel.setBackground(Color.CYAN);
         drawingPanel.add(titleHistogram);
 
         // Histogram Variable 2
-        drawingPane2 = new Histogram(histogramModel);
+        histogramModel1= new HistogramModel(dataModel.getVariableY());
+        drawingPane2 = new Histogram(histogramModel1);
         drawingPane2.setBackground(Color.RED);
         drawingPane2.add(titleHistogram);
 
