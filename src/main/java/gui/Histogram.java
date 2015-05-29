@@ -14,21 +14,26 @@ public class Histogram extends JPanel{
 
 
     private HistogramModel histogramModel;
+    private double classes;
+    private double countValuesPerClass;
 
     public Histogram(HistogramModel histogramModel) {
 
-
         this.histogramModel = histogramModel;
+        classes=histogramModel.getCountClasses();
+        for(int i=0;i<classes;i++) {
+            countValuesPerClass = histogramModel.getCounterValues(i);
+        }
+
+
     }
 
 
-   /* @Override
+   @Override
     protected void paintComponent(Graphics g) {
-        double classesOfValue = Math.round((double) ((values.size() /(Math.sqrt(values.size())))));
-
-        int barWidth = (int) (getWidth() / classesOfValue); //width = Breite, Methode holt sich die min. Breite des Frame + teilt sie durch Arraygrösse
-        for (int i = 0; i < histogramModel; i++) {
-            double value = values.get(i);
+        int barWidth = (int) (getWidth() / classes); //width = Breite, Methode holt sich die min. Breite des Frame + teilt sie durch Arraygrösse
+        for (int i = 0; i <classes ; i++) {
+            double value = histogramModel.getCounterValues(i);
             int barHeight = (int) (value / 100 * getHeight());
 
             int x = (int) ((int) i * barWidth);
@@ -39,7 +44,7 @@ public class Histogram extends JPanel{
             g.setColor(Color.BLUE);
             g.drawRect(x, y, barWidth, barHeight);
         }
-    } */
+    }
 
 }
 
