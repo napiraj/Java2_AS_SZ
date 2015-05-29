@@ -27,6 +27,7 @@ public class ScatterPlot extends JPanel{
     private double widthLimiter;
     private double heightLimiter;
     private int dotSize;
+    boolean line;
 
     public Color getDot_color() {
         return dot_color;
@@ -49,20 +50,12 @@ public class ScatterPlot extends JPanel{
         this.dotSize = pointSize;
     }
 
-    public boolean makeLine()
-    {
-
-    }
-
-    //kk
-
-
 
     public ScatterPlot(Variable variable1, Variable variable2){
 
         this.xaxis= variable1;
         this.yaxis=variable2;
-
+        this.line = false;
         this.dot_color = Color.BLACK;
 
     }
@@ -100,6 +93,14 @@ public class ScatterPlot extends JPanel{
             g.setColor(getDot_color());
             g.fillOval((int) (x), (int) (y), (int) dotSize, (int) dotSize);
 
+        }
+
+        if (line)
+        {
+            double firstValueX = xminValue;
+            double firstValueY = yminValue;
+            for
+            g.drawLine();
         }
 
     }
