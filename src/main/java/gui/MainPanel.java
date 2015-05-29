@@ -2,18 +2,29 @@ package gui;
 
 import model.DataModel;
 import model.HistogramModel;
-import model.Variable;
-
 import javax.swing.*;
 import java.awt.*;
-import java.util.ArrayList;
-
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 
 /**
  * Created by Alexandra on 20.05.2015.
  */
 public class MainPanel extends JPanel {
+
+    private JPanel buttonPanel;
+    private JLabel titleHistogram;
+    private JLabel titleScatterPlot;
+    private JPanel scatterPanel;
+    private JPanel histoPanel;
+    private HistogramModel histogramModel;
+    private Histogram drawingPanel;
+    private Histogram drawingPane2;
+    private ScatterPlot drawingScatterPlot;
+    private JComboBox pointSize;
+    private JButton lineButton;
+
     public MainPanel(DataModel dataModel) {
 
 
@@ -22,45 +33,81 @@ public class MainPanel extends JPanel {
         this.setBackground(Color.GREEN);
 
 
-        JLabel titleHistogram = new JLabel("VariableName ");
-       // this.add(titleHistogram, BorderLayout.EAST);
-        JLabel titleScatterPlot = new JLabel("ScatterPlot: ");
-        // this.add(titleScatterPlot, BorderLayout.SOUTH);
+        //getTopLevelAncestor().repaint(); ruft das Frame auf um alles neu zu zeichnen
 
-        JPanel scatterPanel= new JPanel();
+        buttonPanel = new JPanel();
+        buttonPanel.setLayout(new GridLayout(1, 4));
+        buttonPanel.setBackground(Color.BLUE);
+
+
+        this.add(buttonPanel, BorderLayout.EAST);
+
+        titleHistogram = new JLabel("Variable Name");
+
+        titleScatterPlot = new JLabel("ScatterPlot: ");
+
+        scatterPanel= new JPanel();
         scatterPanel.setLayout(new BoxLayout(scatterPanel, BoxLayout.PAGE_AXIS));
         scatterPanel.setBackground(Color.GRAY);
         scatterPanel.add(titleScatterPlot);
         add(scatterPanel, BorderLayout.CENTER);
 
 
-       ScatterPlot drawingScatterPlot = new ScatterPlot(dataModel.getVariableX(), dataModel.getVariableY());
+        drawingScatterPlot = new ScatterPlot(dataModel.getVariableX(), dataModel.getVariableY());
         scatterPanel.add(drawingScatterPlot);
 
-        JPanel histoPanel= new JPanel();
+        pointSize = new JComboBox();
+        for (int i = 0; i < 15; i++) {
+
+            pointSize.addItem(i);
+
+        }
+
+        // Size of Dot
+        pointSize.addActionListener(new ActionListener() {
+
+            @Override
+
+            public void actionPerformed(ActionEvent e) {
+                Integer selectedSize = (Integer) pointSize.getSelectedItem();
+                drawingScatterPlot.setDotSize(selectedSize);
+            }});
+
+        buttonPanel.add(pointSize);
+
+        lineButton = new JButton();
+
+        lineButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+            }
+        });
+
+        buttonPanel.add(lineButton);
+
+        histoPanel= new JPanel();
         histoPanel.setLayout(new BoxLayout(histoPanel, BoxLayout.LINE_AXIS));
         histoPanel.setBackground(Color.BLACK);
         scatterPanel.add(histoPanel);
 
 
-
-        HistogramModel histogramModel = new HistogramModel();
-        Histogram drawingPanel = new Histogram(histogramModel);
+        // Histogram Valriable 1
+        histogramModel = new HistogramModel();
+        drawingPanel = new Histogram(histogramModel);
         drawingPanel.setBackground(Color.CYAN);
         drawingPanel.add(titleHistogram);
-        Histogram drawingPane2 = new Histogram(histogramModel);
+
+        // Histogram Variable 2
+        drawingPane2 = new Histogram(histogramModel);
         drawingPane2.setBackground(Color.RED);
         drawingPane2.add(titleHistogram);
 
 
         histoPanel.add(drawingPanel);
         histoPanel.add(drawingPane2);
-        //hallo comitte mal!!!!!!!!!!!!
 
-
-
-
-
+        //:)
 
     }
 }
