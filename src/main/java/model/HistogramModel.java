@@ -11,7 +11,6 @@ import java.util.Collections;
  */
 public class HistogramModel {
     private ArrayList<Double> values1 ;
-    private ArrayList<Double> values2;
     private double countClasses;
     private double classWidth;
     private double belowclass;
@@ -21,23 +20,22 @@ public class HistogramModel {
     private ArrayList<Integer> counterValues;
 
 
-
-    public HistogramModel( Variable variable1, Variable variable2){
-        values1= new ArrayList<Double>();
-        values2= new ArrayList<Double>();
+    public HistogramModel( Variable varHistogram1){
+        this.values1= new ArrayList<Double>();
         counterValues = new ArrayList<Integer>();
 
-        values1=variable1.getValue();
-        values2=variable2.getValue();
+        values1=varHistogram1.getValue();
+
         countClasses=Math.round((double) ((Math.sqrt(values1.size()))));
-        classWidth=variable1.getMax()-variable1.getMin();
-        belowclass=variable1.getMin();
+        classWidth=varHistogram1.getMax()- varHistogram1.getMin();
+        belowclass=varHistogram1.getMin();
         upperclass=0;
         realClassWidth=classWidth/countClasses;
         counter=0;
 
         Collections.sort(values1);
-        Collections.sort(values2);
+
+
         int a=0;
         for(int i=0; i< countClasses;i++){
             upperclass= belowclass+realClassWidth;
@@ -55,7 +53,6 @@ public class HistogramModel {
 
         }
 
-
     }
 
     public double getCountClasses()
@@ -66,7 +63,9 @@ public class HistogramModel {
     public int getCounterValues(int index){
         return counterValues.get(index);
 
+
     }
+
 
 
 }
