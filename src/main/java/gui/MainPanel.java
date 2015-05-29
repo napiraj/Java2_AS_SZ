@@ -24,6 +24,7 @@ public class MainPanel extends JPanel {
     private ScatterPlot drawingScatterPlot;
     private JComboBox pointSize;
     private JButton lineButton;
+    private Integer selectedSize;
 
     public MainPanel(DataModel dataModel) {
 
@@ -36,7 +37,7 @@ public class MainPanel extends JPanel {
         //getTopLevelAncestor().repaint(); ruft das Frame auf um alles neu zu zeichnen
 
         buttonPanel = new JPanel();
-        buttonPanel.setLayout(new GridLayout(1, 4));
+        buttonPanel.setLayout(new GridLayout(4, 1));
         buttonPanel.setBackground(Color.BLUE);
 
 
@@ -57,7 +58,7 @@ public class MainPanel extends JPanel {
         scatterPanel.add(drawingScatterPlot);
 
         pointSize = new JComboBox();
-        for (int i = 0; i < 15; i++) {
+        for (int i = 1; i < 20; i++) {
 
             pointSize.addItem(i);
 
@@ -69,18 +70,22 @@ public class MainPanel extends JPanel {
             @Override
 
             public void actionPerformed(ActionEvent e) {
-                Integer selectedSize = (Integer) pointSize.getSelectedItem();
+                selectedSize = (Integer) pointSize.getSelectedItem();
                 drawingScatterPlot.setDotSize(selectedSize);
+                repaint();
             }});
 
         buttonPanel.add(pointSize);
 
-        lineButton = new JButton();
+        lineButton = new JButton("Line");
 
         lineButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
 
+                drawingScatterPlot.makeLine();
+
+                repaint();
             }
         });
 
@@ -107,7 +112,8 @@ public class MainPanel extends JPanel {
         histoPanel.add(drawingPanel);
         histoPanel.add(drawingPane2);
 
-        //:)
+        //
+
 
     }
 }
