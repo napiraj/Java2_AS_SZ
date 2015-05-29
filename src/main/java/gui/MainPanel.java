@@ -24,7 +24,7 @@ public class MainPanel extends JPanel {
     private Histogram drawingPane2;
     private ScatterPlot drawingScatterPlot;
     private JComboBox pointSize;
-    private JButton lineButton;
+    private JCheckBox lineButton;
     private Integer selectedSize;
 
     public MainPanel(DataModel dataModel) {
@@ -51,7 +51,6 @@ public class MainPanel extends JPanel {
         scatterPanel= new JPanel();
         scatterPanel.setLayout(new BoxLayout(scatterPanel, BoxLayout.PAGE_AXIS));
         scatterPanel.setBackground(Color.GRAY);
-        scatterPanel.setBorder(BorderFactory.createLineBorder(Color.black));
         scatterPanel.add(titleScatterPlot);
         add(scatterPanel, BorderLayout.CENTER);
 
@@ -75,18 +74,17 @@ public class MainPanel extends JPanel {
                 selectedSize = (Integer) pointSize.getSelectedItem();
                 drawingScatterPlot.setDotSize(selectedSize);
                 repaint();
-            }
-        });
+            }});
 
         buttonPanel.add(pointSize);
 
-       lineButton = new JButton("Line");
+        lineButton = new JCheckBox("Line");
 
         lineButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
 
-                drawingScatterPlot.makeLine();
+                drawingScatterPlot.line = true;
 
                 repaint();
             }
@@ -94,11 +92,9 @@ public class MainPanel extends JPanel {
 
         buttonPanel.add(lineButton);
 
-
         histoPanel= new JPanel();
         histoPanel.setLayout(new BoxLayout(histoPanel, BoxLayout.LINE_AXIS));
-        histoPanel.setBorder(BorderFactory.createLineBorder(Color.black));
-        histoPanel.setBackground(Color.YELLOW);
+        histoPanel.setBackground(Color.BLACK);
         scatterPanel.add(histoPanel);
 
 
@@ -109,7 +105,7 @@ public class MainPanel extends JPanel {
         drawingPanel.add(titleHistogram);
 
         // Histogram Variable 2
-        histogramModel1= new HistogramModel(dataModel.getVariableY());
+        histogramModel1 = new HistogramModel(dataModel.getVariableY());
         drawingPane2 = new Histogram(histogramModel1);
         drawingPane2.setBackground(Color.RED);
         drawingPane2.add(titleHistogram);
@@ -118,7 +114,6 @@ public class MainPanel extends JPanel {
         histoPanel.add(drawingPanel);
         histoPanel.add(drawingPane2);
 
-        //
 
 
     }
