@@ -18,42 +18,56 @@ public class HistogramModel {
     private double realClassWidth;
     private int counter;
     private ArrayList<Integer> counterValues;
+    private double smallest;
 
 
     public HistogramModel( Variable varHistogram1){
-        this.values1= new ArrayList<Double>();
+
+       this.values1= new ArrayList<Double>();
         counterValues = new ArrayList<Integer>();
 
         values1=varHistogram1.getValue();
 
+
+
         countClasses=Math.round((double) ((Math.sqrt(values1.size()))));
         classWidth=varHistogram1.getMax()- varHistogram1.getMin();
         belowclass=varHistogram1.getMin();
+        smallest=varHistogram1.getMin();
         upperclass=0;
         realClassWidth=classWidth/countClasses;
         counter=0;
 
-        Collections.sort(values1);
+        //Collections.sort(values1);
 
 
-        int a=0;
+
+
+
+
+            int a=0;
+
         for(int i=0; i< countClasses;i++){
             upperclass= belowclass+realClassWidth;
 
-            while(values1.get(a)<upperclass ){
+            while(a<(values1.size()-1) ){
                 a++;
+                if(values1.get(a)<upperclass&&values1.get(a)>belowclass){
                 counter++;
+                }
 
             }
-
             counterValues.add(counter);
+
+            a=0;
             counter=0;
 
             belowclass=upperclass;
 
-        }
 
+        }
     }
+
 
     public double getCountClasses()
     {
@@ -62,6 +76,7 @@ public class HistogramModel {
 
     public int getCounterValues(int index){
         return counterValues.get(index);
+
 
 
     }
