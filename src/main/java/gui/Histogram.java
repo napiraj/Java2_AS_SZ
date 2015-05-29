@@ -13,11 +13,14 @@ import java.util.ArrayList;
 public class Histogram extends JPanel{
 
 
+
+
     private HistogramModel histogramModel;
     private double classes;
     private double countValuesPerClass;
 
     public Histogram(HistogramModel histogramModel) {
+
 
         this.histogramModel = histogramModel;
         classes=histogramModel.getCountClasses();
@@ -34,16 +37,17 @@ public class Histogram extends JPanel{
         int barWidth = (int) (getWidth() / classes); //width = Breite, Methode holt sich die min. Breite des Frame + teilt sie durch Arraygrösse
         for (int i = 0; i <classes ; i++) {
             double value = histogramModel.getCounterValues(i);
-            int barHeight = (int) (value / 100 * getHeight());
+            int barHeight = (int) (value / 10 * getHeight());
 
             int x = (int) ((int) i * barWidth);
             int y = getHeight() - barHeight;
 
             g.setColor(Color.BLUE);
             g.fillRect(x, y, barWidth, barHeight);
-            g.setColor(Color.BLUE);
+            g.setColor(Color.DARK_GRAY);
             g.drawRect(x, y, barWidth, barHeight);
         }
+
     }
 
 }
