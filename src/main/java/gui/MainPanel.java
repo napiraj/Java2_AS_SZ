@@ -23,7 +23,7 @@ public class MainPanel extends JPanel {
     private Histogram drawingPane2;
     private ScatterPlot drawingScatterPlot;
     private JComboBox pointSize;
-    private JButton lineButton;
+    private JCheckBox lineCheckbox;
     private Integer selectedSize;
 
     public MainPanel(DataModel dataModel) {
@@ -77,19 +77,21 @@ public class MainPanel extends JPanel {
 
         buttonPanel.add(pointSize);
 
-        lineButton = new JButton("Line");
+        lineCheckbox = new JCheckBox("Line");
 
-        lineButton.addActionListener(new ActionListener() {
+        lineCheckbox.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
 
-                drawingScatterPlot.makeLine();
-
-                repaint();
+                if (lineCheckbox.isSelected())
+                {
+                    drawingScatterPlot.line = true;
+                    repaint();
+                }
             }
         });
 
-        buttonPanel.add(lineButton);
+        buttonPanel.add(lineCheckbox);
 
         histoPanel= new JPanel();
         histoPanel.setLayout(new BoxLayout(histoPanel, BoxLayout.LINE_AXIS));
@@ -98,7 +100,7 @@ public class MainPanel extends JPanel {
 
 
         // Histogram Valriable 1
-        histogramModel = new HistogramModel();
+        histogramModel = new HistogramModel(dataModel.getVariableX(), dataModel.getVariableY());
         drawingPanel = new Histogram(histogramModel);
         drawingPanel.setBackground(Color.CYAN);
         drawingPanel.add(titleHistogram);
