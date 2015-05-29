@@ -30,6 +30,16 @@ public class ScatterPlot extends JPanel{
 
     private Color dot_color;
 
+    public int getDotSize() {
+        return dotSize;
+    }
+
+    public void setDotSize(int pointSize) {
+        this.dotSize = pointSize;
+    }
+
+    private int dotSize;
+
 
 
     public ScatterPlot(Variable variable1, Variable variable2){
@@ -55,7 +65,7 @@ public class ScatterPlot extends JPanel{
         xmaxValue=xaxis.getMax();
 
 
-        double radius= 10; // hier kommt die wählbare Grösse rein
+        double radius= 1; // hier kommt die wählbare Grösse rein
         double panelWidth=getWidth();
         double panelHeight=getHeight();
         double height= (ymaxValue - yminValue);
