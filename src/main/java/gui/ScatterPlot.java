@@ -19,6 +19,16 @@ public class ScatterPlot extends JPanel{
     private Variable xaxis;
     private Variable yaxis;
 
+    public Color getDot_color() {
+        return dot_color;
+    }
+
+    public void setDot_color(Color dot_color) {
+        dot_color = dot_color;
+        this.repaint();
+    }
+
+    private Color dot_color;
 
 
 
@@ -27,9 +37,7 @@ public class ScatterPlot extends JPanel{
         this.xaxis= variable1;
         this.yaxis=variable2;
 
-
-
-
+        this.dot_color = Color.BLACK;
     }
 
     @Override
@@ -62,7 +70,7 @@ public class ScatterPlot extends JPanel{
 
             double x=(((variable1.get(i)-xminValue)/(xmaxValue-xminValue))*(panelWidth-4*radius)+2*radius);
             double y= (panelHeight-((variable2.get(i)-yminValue)/height)*panelHeight*0.85)- heightLimiter;
-            g.setColor(Color.BLUE);
+            g.setColor(getDot_color());
             g.fillOval((int) (x), (int) (y), (int) radius, (int) radius);
 
         }
