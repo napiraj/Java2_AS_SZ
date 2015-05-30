@@ -31,48 +31,32 @@ public class Analyse {
             }
             name = selectedFile.getName();
 
-            System.out.println(formatTester(name));
-
         }
 
 
         DataLoader loader= null;
 
 
-        if ( formatTester(name)=="txt"){
-            System.out.println("hier kommt das spaltenorientiertes java programm rein");
-
+        if ( formatTester(name)=="txt")
+        {
             loader= new ColumnorientedDataLoader();
-
-
-
-
         }
 
         else if( formatTester(name)=="lin")
         {
-            System.out.println("hier kommt ein zeilenorientiertes java programm");
-
             loader = new LineorientedDataLoader();
-
         }
         DataModel dataModel=null;
 
         if( loader != null)
         {
             dataModel= loader.loadDataModel(selectedFile);
+        }
 
-
-            System.out.println(dataModel.getVariableX() + " " + dataModel.getVariableY());
-    }
-
-    JFrame frame= new MainFrame(dataModel);
-
-
+        // generate Frame
+        JFrame frame= new MainFrame(dataModel);
+        frame.setTitle(name);
         frame.setVisible(true);
-
-
-
     }
 
     public static String formatTester(String file) {
@@ -81,14 +65,12 @@ public class Analyse {
 
         if (file.endsWith("txt")) {
             endung = "txt";
-            //Spaltenorientiert test
+
 
         } else if (file.endsWith("lin")) {
             endung = "lin";
 
-
         }
-
 
         return endung;
     }

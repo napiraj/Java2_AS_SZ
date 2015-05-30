@@ -12,21 +12,20 @@ public class Variable {
 
     public Variable(String name, ArrayList<Double> valueVariable) {
 
-        name= name;
-
-        values= valueVariable;
+        this.name= name;
+        this.values= valueVariable;
     }
 
     public String getName(){
-        return name;
+        return this.name;
     }
 
     public ArrayList getValue(){
-        return values;
+        return this.values;
     }
 
     public int getNumberOfValue1(){
-        return values.size();
+        return this.values.size();
     }
 
 
@@ -38,7 +37,6 @@ public class Variable {
                 smallestValueVariable1 = values.get(i);
 
             }
-
 
         }
         return smallestValueVariable1;

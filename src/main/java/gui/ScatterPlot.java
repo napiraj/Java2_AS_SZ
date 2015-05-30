@@ -28,6 +28,10 @@ public class ScatterPlot extends JPanel{
     private double heightLimiter;
     private int dotSize;
     boolean line;
+    private final double WIDTH_FACTOR = 0.055;
+    private final double HEIGHT_FACTOR = 0.14;
+    private ArrayList<Double> variable1;
+    private ArrayList<Double> variable2;
 
     public Color getDot_color() {
         return dot_color;
@@ -43,7 +47,7 @@ public class ScatterPlot extends JPanel{
     public int getDotSize() {
 
         dotSize = radius * dotSize;
-        return dotSize;
+        return this.dotSize;
     }
 
     public void setDotSize(int pointSize) {
@@ -63,46 +67,58 @@ public class ScatterPlot extends JPanel{
     @Override
     protected void paintComponent(Graphics g) {
 
-        ArrayList<Double> variable1 = new ArrayList<Double>();
-        ArrayList<Double> variable2= new ArrayList<Double>();
+       // this.variable1 = new ArrayList<Double>();
+       // this.variable2= new ArrayList<Double>();
 
 
-        variable1=xaxis.getValue();
-        variable2=yaxis.getValue();
+        variable1 = xaxis.getValue();
+        variable2 = yaxis.getValue();
         this.yminValue = yaxis.getMin();
         this.ymaxValue = yaxis.getMax();
         this.xminValue=xaxis.getMin();
         this.xmaxValue=xaxis.getMax();
 
 
-        radius= 10; // hier kommt die wählbare Grösse rein
+        this.radius= 10;
         this.panelWidth=getWidth();
         this.panelHeight=getHeight();
         this.height= (ymaxValue - yminValue);
         this.ycoefficient= panelWidth/height;
         this.xcoefficient= panelHeight/(xmaxValue-xminValue);
-        this.widthLimiter= (1-0.92-0.025)*panelWidth;
-        this.heightLimiter=(1-0.85-0.01)*panelHeight;
+        this.widthLimiter= WIDTH_FACTOR *panelWidth; // realisiert als Konstante (1-0.92-0.025)*panelWidth;
+        this.heightLimiter= HEIGHT_FACTOR *panelHeight; // (1-0.85-0.01)*panelHeight;
+        double x = 0;
+        double y = 0;
 
 
+        if (!line) {
+            for (int i = 0; i < variable1.size(); i++) {
 
-        for( int i = 0; i< variable1.size();i++ ){
+                x = (((variable1.get(i) - xminValue) / (xmaxValue - xminValue)) * (panelWidth - 4 * dotSize) + 2 * dotSize);
+                y = (panelHeight - ((variable2.get(i) - yminValue) / height) * panelHeight * 0.85) - heightLimiter;
+                g.setColor(getDot_color());
+                g.fillOval((int) (x), (int) (y), dotSize, dotSize);
 
-            double x=(((variable1.get(i)-xminValue)/(xmaxValue-xminValue))*(panelWidth-4*dotSize)+2*dotSize);
-            double y= (panelHeight-((variable2.get(i)-yminValue)/height)*panelHeight*0.85)- heightLimiter;
-            g.setColor(getDot_color());
-            g.fillOval((int) (x), (int) (y), (int) dotSize, (int) dotSize);
-
+            }
         }
-
-        if (line)
+        else if (line)
         {
             double firstValueX = xminValue;
             double firstValueY = yminValue;
-            for
-            g.drawLine();
+
+            for (int c = 0; c < variable1.size(); c++)
+            {
+                g.drawLine((int) firstValueX,(int) firstValueY, (int)(x), (int)(y));
+                firstValueX = x;
+                firstValueY = y;
+            }
+            line = false;
         }
+
+        g.drawString(xaxis.getName(), (int) panelWidth/2, (int) panelHeight - radius);
+        g.drawString(yaxis.getName(), (int) radius, (int) panelHeight/8);
 
     }
 
 }
+

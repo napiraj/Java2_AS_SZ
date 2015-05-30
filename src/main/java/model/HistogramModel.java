@@ -7,7 +7,7 @@ import java.util.Collections;
 /**
  * Created by Alexandra on 27.05.2015.
  *
- * Bekommen eine Liste von Werten--> in Klassen einteilen, höhe verändern
+ * Bekommen eine Liste von Werten--> in Klassen einteilen, hï¿½he verï¿½ndern
  */
 public class HistogramModel {
     private ArrayList<Double> values1 ;
@@ -24,31 +24,27 @@ public class HistogramModel {
     public HistogramModel( Variable varHistogram1){
 
        this.values1= new ArrayList<Double>();
-        counterValues = new ArrayList<Integer>();
+       this.counterValues = new ArrayList<Integer>();
 
-        values1=varHistogram1.getValue();
+       this.values1=varHistogram1.getValue();
 
 
 
-        countClasses=Math.round((double) ((Math.sqrt(values1.size()))));
-        classWidth=varHistogram1.getMax()- varHistogram1.getMin();
-        belowclass=varHistogram1.getMin();
-        smallest=varHistogram1.getMin();
-        upperclass=0;
-        realClassWidth=classWidth/countClasses;
-        counter=0;
+        this.countClasses=Math.round((double) ((Math.sqrt(values1.size()))));
+        this.classWidth=varHistogram1.getMax()- varHistogram1.getMin();
+        this.belowclass=varHistogram1.getMin();
+        this.smallest=varHistogram1.getMin();
+        this.upperclass=0;
+        this.realClassWidth=classWidth/countClasses;
+        this.counter=0;
 
         //Collections.sort(values1);
-
-
-
-
 
 
             int a=0;
 
         for(int i=0; i< countClasses;i++){
-            upperclass= belowclass+realClassWidth;
+            this.upperclass = belowclass+realClassWidth;
 
             while(a<(values1.size()-1) ){
                 a++;
@@ -75,7 +71,7 @@ public class HistogramModel {
     }
 
     public int getCounterValues(int index){
-        return counterValues.get(index);
+        return this.counterValues.get(index);
 
 
 
