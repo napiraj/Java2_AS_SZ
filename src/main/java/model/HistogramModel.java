@@ -2,7 +2,6 @@ package model;
 
 import java.util.ArrayList;
 import java.lang.Math;
-import java.util.Collections;
 
 /**
  * Created by Alexandra on 27.05.2015.
@@ -19,6 +18,7 @@ public class HistogramModel {
     private int counter;
     private ArrayList<Integer> counterValues;
     private double smallest;
+    private double quantityOfList;
 
 
     public HistogramModel( Variable varHistogram1){
@@ -75,6 +75,11 @@ public class HistogramModel {
 
 
 
+    }
+
+    public double getQuantityOfList(){
+        quantityOfList =values1.size();
+        return quantityOfList;
     }
 
 
