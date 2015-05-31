@@ -1,11 +1,9 @@
 package gui;
 
 import model.HistogramModel;
-import model.Variable;
 
 import javax.swing.*;
 import java.awt.*;
-import java.util.ArrayList;
 
 /**
  * Created by Alexandra on 20.05.2015.
@@ -18,8 +16,11 @@ public class Histogram extends JPanel{
     private HistogramModel histogramModel;
     private double classes;
     private double countValuesPerClass;
+    private double relativeFrequency;
 
     public Histogram(HistogramModel histogramModel) {
+
+        relativeFrequency=0;
 
 
         this.histogramModel = histogramModel;
@@ -37,7 +38,9 @@ public class Histogram extends JPanel{
         int barWidth = (int) (getWidth() / classes); //width = Breite, Methode holt sich die min. Breite des Frame + teilt sie durch Arraygrösse
         for (int i = 0; i <classes ; i++) {
             double value = histogramModel.getCounterValues(i);
-            int barHeight = (int) (value / 10 * getHeight());
+            relativeFrequency=value/histogramModel.getQuantityOfList();
+
+            int barHeight = (int) (relativeFrequency*getHeight());
 
             int x = (int) ((int) i * barWidth);
             int y = getHeight() - barHeight;
