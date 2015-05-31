@@ -36,7 +36,7 @@ public class HistogramModel {
         this.smallest=varHistogram1.getMin();
         this.upperclass=0;
         this.realClassWidth=classWidth/countClasses;
-        this.counter=0;
+        this.counter=1;
 
         //Collections.sort(values1);
 
@@ -44,11 +44,11 @@ public class HistogramModel {
             int a=0;
 
         for(int i=0; i< countClasses;i++){
-            this.upperclass = belowclass+realClassWidth;
+            this.upperclass = belowclass+realClassWidth+0.01;
 
             while(a<(values1.size()-1) ){
                 a++;
-                if(values1.get(a)<upperclass&&values1.get(a)>belowclass){
+                if((values1.get(a)<upperclass) && (values1.get(a)>=belowclass)){
                 counter++;
                 }
 
