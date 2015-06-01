@@ -32,8 +32,8 @@ public class HistogramModel {
 
 
         this.countClasses=Math.round((double) ((Math.sqrt(values1.size()))));
-        this.diffMaxMin =varHistogram1.getMax()- varHistogram1.getMin();
-        this.belowclass=(int)varHistogram1.getMin();
+        this.diffMaxMin =Math.ceil((double)varHistogram1.getMax()- varHistogram1.getMin());// rundet immer auf
+        this.belowclass=varHistogram1.getMin();
         this.smallest=varHistogram1.getMin();
         this.upperclass=0;
         this.realClassWidth=diffMaxMin /countClasses;
@@ -42,11 +42,12 @@ public class HistogramModel {
             int a=0;
 
         for(int i=0; i< countClasses;i++){
-            this.upperclass = belowclass+realClassWidth;
+            this.upperclass = belowclass+realClassWidth+0.01;
+            belowclass=belowclass-0.01;
 
             while(a<(values1.size()) ){
 
-                if((values1.get(a)<=upperclass) && (values1.get(a)>=belowclass)){
+                if((values1.get(a)<upperclass) && (values1.get(a)>belowclass)){
                 counter++;
                 }
                 a++;
