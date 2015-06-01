@@ -11,14 +11,15 @@ import java.lang.Math;
 public class HistogramModel {
     private ArrayList<Double> values1 ;
     private double countClasses;
-    private double classWidth;
+    private double diffMaxMin;
     private double belowclass;
     private double upperclass;
     private double realClassWidth;
     private int counter;
     private ArrayList<Integer> counterValues;
     private double smallest;
-    private double quantityOfList;
+    private double highestBar;
+
 
 
     public HistogramModel( Variable varHistogram1){
@@ -31,15 +32,12 @@ public class HistogramModel {
 
 
         this.countClasses=Math.round((double) ((Math.sqrt(values1.size()))));
-        this.classWidth=varHistogram1.getMax()- varHistogram1.getMin();
+        this.diffMaxMin =varHistogram1.getMax()- varHistogram1.getMin();
         this.belowclass=varHistogram1.getMin();
         this.smallest=varHistogram1.getMin();
         this.upperclass=0;
-        this.realClassWidth=classWidth/countClasses;
-        this.counter=1;
-
-        //Collections.sort(values1);
-
+        this.realClassWidth= diffMaxMin /countClasses;
+        this.counter=0;
 
             int a=0;
 
@@ -77,9 +75,19 @@ public class HistogramModel {
 
     }
 
-    public double getQuantityOfList(){
-        quantityOfList =values1.size();
-        return quantityOfList;
+
+
+    public double getHighestBar(){
+        highestBar= counterValues.get(0);
+
+        for (int i= 1; i<counterValues.size();i++) {
+            if (counterValues.get(i) > highestBar) {
+                highestBar =counterValues.get(i);
+
+            }
+        }
+
+        return highestBar;
     }
 
 
