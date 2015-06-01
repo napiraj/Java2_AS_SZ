@@ -46,17 +46,31 @@ public class Analyse {
         {
             loader = new LineorientedDataLoader();
         }
+        else if( formatTester(name)=="null")
+        {
+            JOptionPane.showMessageDialog(null,"Falsche Datei, Unterstuetzt nur \".lin\" und \".txt\"-Dateien","Wrong File",JOptionPane.WARNING_MESSAGE);
+        }
+        else{
+            JOptionPane.showMessageDialog(null,"Es wurde keine Datei ausgewaehlt","None File",JOptionPane.WARNING_MESSAGE);
+        }
         DataModel dataModel=null;
 
         if( loader != null)
         {
             dataModel= loader.loadDataModel(selectedFile);
+            // generate Frame
+            JFrame frame= new MainFrame(dataModel);
+            frame.setTitle(name);
+            frame.setVisible(true);
         }
+        else{
 
-        // generate Frame
-        JFrame frame= new MainFrame(dataModel);
-        frame.setTitle(name);
-        frame.setVisible(true);
+            }
+
+
+
+
+
     }
 
     public static String formatTester(String file) {
@@ -71,6 +85,12 @@ public class Analyse {
             endung = "lin";
 
         }
+        else if(file.length()!=0){
+            endung="null";
+        }
+
+
+
 
         return endung;
     }
