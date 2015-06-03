@@ -1,11 +1,12 @@
 package model;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 
 /**
  * Created by Alexandra on 12.05.2015.
  */
 public interface DataLoader {
-    DataModel loadDataModel(File file);
+    DataModel loadDataModel(File file) throws FileNotFoundException;
 
 }

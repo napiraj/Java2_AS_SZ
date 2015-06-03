@@ -9,15 +9,10 @@ import java.util.Scanner;
  * Created by Alexandra on 12.05.2015.
  */
 public class LineorientedDataLoader implements DataLoader {
-    public DataModel loadDataModel(File file) { // FileNotFoundException
+    public DataModel loadDataModel(File file) throws FileNotFoundException {
 
-        Scanner inputScanner = null;
+        Scanner inputScanner= new Scanner(file);
 
-        try {
-            inputScanner = new Scanner(file);
-        } catch (FileNotFoundException e) {
-            return null;//  nicht return 0, Ausgaben schreiben e.getMessage
-        }
 
         double valueParse1;
         double valueParse2;
@@ -28,6 +23,7 @@ public class LineorientedDataLoader implements DataLoader {
         ArrayList<Double> valuesList1 = new ArrayList<Double>();
         ArrayList<Double> valuesList2 = new ArrayList<Double>();
 
+        // while in has.next
         String line = inputScanner.nextLine();
         numberOfVariables = Double.parseDouble(line);
 

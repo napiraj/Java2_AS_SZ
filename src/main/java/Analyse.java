@@ -6,6 +6,7 @@ import model.DataModel;
 import model.LineorientedDataLoader;
 
 import javax.swing.*;
+import javax.swing.filechooser.FileNameExtensionFilter;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
@@ -18,20 +19,32 @@ public class Analyse {
     public static void main(String[] args) {
         String name = "";
         JFileChooser chooser = new JFileChooser(System.getProperty("user.dir"));
+        FileNameExtensionFilter filter = new FileNameExtensionFilter("TXT & LIN Files","txt","lin");
+        chooser.setAcceptAllFileFilterUsed(false);
+        chooser.setFileFilter(filter);
+        int returnVal = chooser.showOpenDialog(null);
+        if(returnVal == JFileChooser.CANCEL_OPTION) {
+            JOptionPane.showMessageDialog(null,"Es wurde keine Datei ausgewaehlt","None File",JOptionPane.WARNING_MESSAGE);
+
+                    }
+
         Scanner fileScanner = null;
         File selectedFile= null;
 
 
-        if (chooser.showOpenDialog(null) == JFileChooser.APPROVE_OPTION) {
+       if (returnVal == JFileChooser.APPROVE_OPTION) {
             selectedFile = chooser.getSelectedFile();
             try {
                 fileScanner = new Scanner(selectedFile);
             } catch (FileNotFoundException e) {
-                e.printStackTrace(); // schöne Ausgabe machen. System.exit -1
+                JOptionPane.showMessageDialog(null, "Datei existiert nicht mehr"+e.getMessage(), "None File", JOptionPane.WARNING_MESSAGE);
+                 System.exit(-1);
             }
+
             name = selectedFile.getName();
 
         }
+
 
 
         DataLoader loader= null;
@@ -46,28 +59,26 @@ public class Analyse {
         {
             loader = new LineorientedDataLoader();
         }
-        else if( formatTester(name)=="null")
-        {
-            JOptionPane.showMessageDialog(null,"Falsche Datei, Unterstuetzt nur \".lin\" und \".txt\"-Dateien","Wrong File",JOptionPane.WARNING_MESSAGE);
-        }
-        else{
-            JOptionPane.showMessageDialog(null,"Es wurde keine Datei ausgewaehlt","None File",JOptionPane.WARNING_MESSAGE);
-        }
+
         DataModel dataModel=null;
 
-        try {
-            if( loader != null)
+        if( loader != null)
             {
-                dataModel= loader.loadDataModel(selectedFile);
+                try {
+                    dataModel= loader.loadDataModel(selectedFile);
+                } catch (FileNotFoundException e) {
+                    JOptionPane.showMessageDialog(null, "Datei kann nicht gelesen werden"+ e.getMessage(), "None File", JOptionPane.WARNING_MESSAGE);
+                    System.exit(-1);
+                }
+                //
                 // generate Frame
                 JFrame frame= new MainFrame(dataModel);
                 frame.setTitle(name);
                 frame.setVisible(true);
             }
-        } catch (NullPointerException e) {
-            e.printStackTrace();
 
-        }
+
+
 
 
     }
@@ -84,14 +95,7 @@ public class Analyse {
             endung = "lin";
 
         }
-        else if(file.length()!=0){
-            endung="null";
-        }
-
-
-
-
-        return endung;
+         return endung;
     }
 }
 
