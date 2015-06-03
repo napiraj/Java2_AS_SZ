@@ -11,34 +11,20 @@ import java.util.ArrayList;
  */
 public class ScatterPlot extends JPanel{
 
-    private double yminValue;
-    private double ymaxValue;
-    private double xminValue;
-    private double xmaxValue;
-    private double sizeOfPoint;
     private Variable xaxis;
     private Variable yaxis;
     private int radius;
-    private double panelWidth;
-    private double panelHeight;
-    private double height;
-    private double ycoefficient;
-    private double xcoefficient;
-    private double widthLimiter;
-    private double heightLimiter;
     private int dotSize=10;
-    private final double WIDTH_FACTOR = 0.055;
+    // private final double WIDTH_FACTOR = 0.055;
     private final double HEIGHT_FACTOR = 0.14;
-    private ArrayList<Double> variable1;
-    private ArrayList<Double> variable2;
     private boolean drawLine;
 
     public Color getDot_color() {
         return dot_color;
     }
 
-    public void setDot_color(Color dot_color) {
-        dot_color = dot_color;
+    public void setDotColor(Color dot_color) {
+        this.dot_color = dot_color;
         this.repaint();
     }
 
@@ -72,27 +58,25 @@ public class ScatterPlot extends JPanel{
 
     @Override
     protected void paintComponent(Graphics g) {
+        super.paintComponent(g);
 
-       // this.variable1 = new ArrayList<Double>();
-       // this.variable2= new ArrayList<Double>();
+        ArrayList<Double> variable1 = xaxis.getValue();
+        ArrayList<Double> variable2 = yaxis.getValue();
 
-
-        variable1 = xaxis.getValue();
-        variable2 = yaxis.getValue();
-        this.yminValue = yaxis.getMin();
-        this.ymaxValue = yaxis.getMax();
-        this.xminValue=xaxis.getMin();
-        this.xmaxValue=xaxis.getMax();
+        double yminValue = yaxis.getMin();
+        double ymaxValue = yaxis.getMax();
+        double xminValue=xaxis.getMin();
+        double xmaxValue=xaxis.getMax();
 
 
         this.radius= 10;
-        this.panelWidth=getWidth();
-        this.panelHeight=getHeight();
-        this.height= (ymaxValue - yminValue);
-        this.ycoefficient= panelWidth/height;
-        this.xcoefficient= panelHeight/(xmaxValue-xminValue);
-        this.widthLimiter= WIDTH_FACTOR *panelWidth; // realisiert als Konstante (1-0.92-0.025)*panelWidth;
-        this.heightLimiter= HEIGHT_FACTOR *panelHeight; // (1-0.85-0.01)*panelHeight;
+        double panelWidth=getWidth();
+        double panelHeight=getHeight();
+        double height= (ymaxValue - yminValue);
+       // double ycoefficient= panelWidth/height;
+       // double xcoefficient= panelHeight/(xmaxValue-xminValue);
+        //double widthLimiter= WIDTH_FACTOR *panelWidth;
+        double heightLimiter= HEIGHT_FACTOR *panelHeight;
         double x = 0;
         double y = 0;
 
