@@ -55,20 +55,19 @@ public class Analyse {
         }
         DataModel dataModel=null;
 
-        if( loader != null)
-        {
-            dataModel= loader.loadDataModel(selectedFile);
-            // generate Frame
-            JFrame frame= new MainFrame(dataModel);
-            frame.setTitle(name);
-            frame.setVisible(true);
-        }
-        else{
-
+        try {
+            if( loader != null)
+            {
+                dataModel= loader.loadDataModel(selectedFile);
+                // generate Frame
+                JFrame frame= new MainFrame(dataModel);
+                frame.setTitle(name);
+                frame.setVisible(true);
             }
+        } catch (NullPointerException e) {
+            e.printStackTrace();
 
-
-
+        }
 
 
     }
