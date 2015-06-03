@@ -37,8 +37,10 @@ public class Analyse {
             try {
                 fileScanner = new Scanner(selectedFile);
             } catch (FileNotFoundException e) {
-                e.printStackTrace(); // schöne Ausgabe machen. System.exit -1
+                JOptionPane.showMessageDialog(null, "Datei existiert nicht mehr"+e.getMessage(), "None File", JOptionPane.WARNING_MESSAGE);
+                 System.exit(-1);
             }
+
             name = selectedFile.getName();
 
         }
@@ -62,7 +64,13 @@ public class Analyse {
 
         if( loader != null)
             {
-                dataModel= loader.loadDataModel(selectedFile);
+                try {
+                    dataModel= loader.loadDataModel(selectedFile);
+                } catch (FileNotFoundException e) {
+                    JOptionPane.showMessageDialog(null, "Datei kann nicht gelesen werden"+ e.getMessage(), "None File", JOptionPane.WARNING_MESSAGE);
+                    System.exit(-1);
+                }
+                //
                 // generate Frame
                 JFrame frame= new MainFrame(dataModel);
                 frame.setTitle(name);

@@ -1,6 +1,7 @@
 package model;
 
 
+import javax.swing.*;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
@@ -17,7 +18,8 @@ public class ColumnorientedDataLoader implements DataLoader{
         try {
             inputScanner= new Scanner(file);
         } catch (FileNotFoundException e) {
-            return null;
+            JOptionPane.showMessageDialog(null, "mmhh was ist das für ein Fehler?", "None File", JOptionPane.WARNING_MESSAGE);
+            System.exit(-1);
         }
 
         String variableName1=" ";
