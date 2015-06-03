@@ -27,6 +27,9 @@ public class MainPanel extends JPanel {
     private JComboBox pointSize;
     private JCheckBox lineButton;
     private Integer selectedSize;
+    private Color colorChooser;
+    private JButton colorButton;
+    private int returnValue;
 
     public MainPanel(DataModel dataModel) {
 
@@ -86,12 +89,30 @@ public class MainPanel extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) {
 
-                drawingScatterPlot.setLine = true;
+                drawingScatterPlot.setDrawLine(lineButton.isSelected());
 
-            }
-        });
+            }});
+
 
         buttonPanel.add(lineButton);
+
+        colorButton = new JButton("Color");
+
+        colorButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                colorChooser = JColorChooser.showDialog(null, "Choose a Color", Color.black);
+
+
+           /* if (colorChooser == JFileChooser.CANCEL_OPTION)
+                {
+                    JOptionPane.showMessageDialog(null, "Es wurde keine Farbe ausgewählt.", "No Color", JOptionPane.WARNING_MESSAGE);
+                } */
+
+            }});
+
+        buttonPanel.add(colorButton);
 
         histoPanel= new JPanel();
         histoPanel.setLayout(new BoxLayout(histoPanel, BoxLayout.LINE_AXIS));
