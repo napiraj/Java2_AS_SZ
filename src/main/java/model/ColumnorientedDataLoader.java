@@ -15,12 +15,6 @@ public class ColumnorientedDataLoader implements DataLoader{
     public DataModel loadDataModel(File file){
         Scanner inputScanner=null;
 
-        try {
-            inputScanner= new Scanner(file);
-        } catch (FileNotFoundException e) {
-            JOptionPane.showMessageDialog(null, "mmhh was ist das für ein Fehler?", "None File", JOptionPane.WARNING_MESSAGE);
-            System.exit(-1);
-        }
 
         String variableName1=" ";
         ArrayList<Double> valuesList1=new ArrayList<Double>();
