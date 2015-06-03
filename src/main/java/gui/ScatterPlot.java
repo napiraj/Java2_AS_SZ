@@ -26,7 +26,7 @@ public class ScatterPlot extends JPanel{
     private double xcoefficient;
     private double widthLimiter;
     private double heightLimiter;
-    private int dotSize;
+    private int dotSize=10;
     boolean line;
     private final double WIDTH_FACTOR = 0.055;
     private final double HEIGHT_FACTOR = 0.14;
@@ -108,6 +108,11 @@ public class ScatterPlot extends JPanel{
 
             for (int c = 0; c < variable1.size(); c++)
             {
+                x = (((variable1.get(c) - xminValue) / (xmaxValue - xminValue)) * (panelWidth - 4 * dotSize) + 2 * dotSize);
+                y = (panelHeight - ((variable2.get(c) - yminValue) / height) * panelHeight * 0.85) - heightLimiter;
+                g.setColor(getDot_color());
+                g.fillOval((int) (x), (int) (y), dotSize, dotSize);
+
                 g.drawLine((int) firstValueX,(int) firstValueY, (int)(x), (int)(y));
                 firstValueX = x;
                 firstValueY = y;

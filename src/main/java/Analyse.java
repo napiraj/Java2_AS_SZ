@@ -64,7 +64,7 @@ public class Analyse {
             frame.setVisible(true);
         }
         else{
-
+            //Programm neu aufrufen???
             }
 
 
