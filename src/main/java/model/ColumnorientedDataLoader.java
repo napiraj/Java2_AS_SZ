@@ -12,8 +12,9 @@ import java.util.Scanner;
  * Created by Alexandra on 12.05.2015.
  */
 public class ColumnorientedDataLoader implements DataLoader{
-    public DataModel loadDataModel(File file){
-        Scanner inputScanner=null;
+    public DataModel loadDataModel(File file) throws FileNotFoundException {
+
+        Scanner inputScanner=new Scanner(file);
 
 
         String variableName1=" ";
