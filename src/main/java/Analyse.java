@@ -24,7 +24,7 @@ public class Analyse {
         chooser.setFileFilter(filter);
         int returnVal = chooser.showOpenDialog(null);
         if(returnVal == JFileChooser.CANCEL_OPTION) {
-            JOptionPane.showMessageDialog(null,"Es wurde keine Datei ausgewaehlt","None File",JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(null,"Es wurde keine Datei ausgewaehlt","No File",JOptionPane.WARNING_MESSAGE);
 
                     }
 
@@ -37,7 +37,7 @@ public class Analyse {
             try {
                 fileScanner = new Scanner(selectedFile);
             } catch (FileNotFoundException e) {
-                JOptionPane.showMessageDialog(null, "Datei existiert nicht mehr"+e.getMessage(), "None File", JOptionPane.WARNING_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Datei existiert nicht mehr"+e.getMessage(), "No File", JOptionPane.WARNING_MESSAGE);
                  System.exit(-1);
             }
 
