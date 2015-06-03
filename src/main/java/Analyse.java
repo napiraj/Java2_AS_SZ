@@ -27,7 +27,7 @@ public class Analyse {
             try {
                 fileScanner = new Scanner(selectedFile);
             } catch (FileNotFoundException e) {
-                e.printStackTrace();
+                e.printStackTrace(); // schöne Ausgabe machen. System.exit -1
             }
             name = selectedFile.getName();
 

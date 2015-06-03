@@ -9,14 +9,14 @@ import java.util.Scanner;
  * Created by Alexandra on 12.05.2015.
  */
 public class LineorientedDataLoader implements DataLoader {
-    public DataModel loadDataModel(File file) {
+    public DataModel loadDataModel(File file) { // FileNotFoundException
 
         Scanner inputScanner = null;
 
         try {
             inputScanner = new Scanner(file);
         } catch (FileNotFoundException e) {
-            return null;
+            return null;//  nicht return 0, Ausgaben schreiben e.getMessage
         }
 
         double valueParse1;

@@ -74,8 +74,9 @@ public class MainPanel extends JPanel {
             public void actionPerformed(ActionEvent e) {
                 selectedSize = (Integer) pointSize.getSelectedItem();
                 drawingScatterPlot.setDotSize(selectedSize);
-                repaint();
-            }});
+
+            }
+        });
 
         buttonPanel.add(pointSize);
 
@@ -85,8 +86,8 @@ public class MainPanel extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) {
 
-                drawingScatterPlot.line = true;
-                repaint();
+                drawingScatterPlot.setLine = true;
+
             }
         });
 
@@ -102,6 +103,7 @@ public class MainPanel extends JPanel {
         histogramModel = new HistogramModel(dataModel.getVariableX());
         drawingPanel = new Histogram(histogramModel);
         drawingPanel.setBackground(Color.CYAN);
+        drawingPanel.setBorder(BorderFactory.createLineBorder(Color.BLACK,2));
         drawingPanel.add(titleHistogramVariable1);
 
         // Histogram Variable 2

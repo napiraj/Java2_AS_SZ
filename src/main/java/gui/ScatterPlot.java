@@ -32,6 +32,7 @@ public class ScatterPlot extends JPanel{
     private final double HEIGHT_FACTOR = 0.14;
     private ArrayList<Double> variable1;
     private ArrayList<Double> variable2;
+    private boolean setLine;
 
     public Color getDot_color() {
         return dot_color;
@@ -52,6 +53,16 @@ public class ScatterPlot extends JPanel{
 
     public void setDotSize(int pointSize) {
         this.dotSize = pointSize;
+        this.repaint();
+    }
+
+
+    public boolean isSetLine() {
+        return setLine;
+    }
+
+    public void setSetLine(boolean setLine) {
+        this.setLine = setLine;
     }
 
 
