@@ -10,8 +10,8 @@ import java.awt.*;
  */
 public class MainFrame extends JFrame{
 
-    private final int FRAME_WIDTH = 300;
-    private final int FRAME_HEIGHT = 300;
+    private final int FRAME_WIDTH = 400;
+    private final int FRAME_HEIGHT = 400;
 
     public MainFrame(DataModel dataModel)
 

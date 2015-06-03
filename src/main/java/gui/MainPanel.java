@@ -13,23 +13,10 @@ import java.awt.event.ActionListener;
  */
 public class MainPanel extends JPanel {
 
-    private JPanel buttonPanel;
-    private JLabel titleHistogramVariable1;
-    private JLabel titleHistogramVariable2;
-    private JLabel titleScatterPlot;
-    private JPanel scatterPanel;
-    private JPanel histoPanel;
-    private HistogramModel histogramModel;
-    private HistogramModel histogramModel1;
-    private Histogram drawingPanel;
-    private Histogram drawingPane2;
     private ScatterPlot drawingScatterPlot;
     private JComboBox pointSize;
     private JCheckBox lineButton;
     private Integer selectedSize;
-    private Color colorChooser;
-    private JButton colorButton;
-    private int returnValue;
 
     public MainPanel(DataModel dataModel) {
 
@@ -39,28 +26,29 @@ public class MainPanel extends JPanel {
 
         //getTopLevelAncestor().repaint(); ruft das Frame auf um alles neu zu zeichnen
 
-        this.buttonPanel = new JPanel();
-        this.buttonPanel.setLayout(new GridLayout(4, 1));
-        this.buttonPanel.setBackground(Color.WHITE);
+        JPanel buttonPanel = new JPanel();
+
+        buttonPanel.setLayout(new GridLayout(4, 1));
+        buttonPanel.setBackground(Color.WHITE);
 
 
         this.add(buttonPanel, BorderLayout.EAST);
 
-        this.titleHistogramVariable1 = new JLabel(dataModel.getVariableX().getName());
-        this.titleHistogramVariable2 = new JLabel(dataModel.getVariableY().getName());
+        JLabel titleHistogramVariable1 = new JLabel(dataModel.getVariableX().getName());
+        JLabel titleHistogramVariable2 = new JLabel(dataModel.getVariableY().getName());
 
 
-        this.titleScatterPlot = new JLabel("ScatterPlot: ");
+        JLabel titleScatterPlot = new JLabel("ScatterPlot: ");
 
-        this.scatterPanel= new JPanel();
-        this.scatterPanel.setLayout(new BoxLayout(scatterPanel, BoxLayout.PAGE_AXIS));
-        this.scatterPanel.setBackground(Color.YELLOW);
-        this.scatterPanel.add(titleScatterPlot);
+        JPanel scatterPanel= new JPanel();
+        scatterPanel.setLayout(new BoxLayout(scatterPanel, BoxLayout.PAGE_AXIS));
+        scatterPanel.setBackground(Color.GRAY);
+        scatterPanel.add(titleScatterPlot);
         add(scatterPanel, BorderLayout.CENTER);
 
 
         this.drawingScatterPlot = new ScatterPlot(dataModel.getVariableX(), dataModel.getVariableY());
-        this.scatterPanel.add(drawingScatterPlot);
+        scatterPanel.add(drawingScatterPlot);
 
         this.pointSize = new JComboBox();
         for (int i = 1; i < 20; i++) {
@@ -96,46 +84,44 @@ public class MainPanel extends JPanel {
 
         buttonPanel.add(lineButton);
 
-        colorButton = new JButton("Color");
+        JButton colorButton = new JButton("Color");
 
         colorButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
 
-                colorChooser = JColorChooser.showDialog(null, "Choose a Color", Color.black);
-
-
-           /* if (colorChooser == JFileChooser.CANCEL_OPTION)
+                Color dotColor = JColorChooser.showDialog(null, "Choose a Color", Color.black);
+                if (dotColor != null)
                 {
-                    JOptionPane.showMessageDialog(null, "Es wurde keine Farbe ausgewählt.", "No Color", JOptionPane.WARNING_MESSAGE);
-                } */
-
+                    drawingScatterPlot.setDotColor(dotColor);
+                }
             }});
 
         buttonPanel.add(colorButton);
 
-        histoPanel= new JPanel();
+        JPanel histoPanel= new JPanel();
         histoPanel.setLayout(new BoxLayout(histoPanel, BoxLayout.LINE_AXIS));
         histoPanel.setBackground(Color.GREEN);
         scatterPanel.add(histoPanel);
 
 
         // Histogram Valriable 1
-        histogramModel = new HistogramModel(dataModel.getVariableX());
-        drawingPanel = new Histogram(histogramModel);
-        drawingPanel.setBackground(Color.CYAN);
-        drawingPanel.setBorder(BorderFactory.createLineBorder(Color.BLACK,2));
-        drawingPanel.add(titleHistogramVariable1);
+        HistogramModel histogramModelXValue = new HistogramModel(dataModel.getVariableX());
+        Histogram drawingPanelX = new Histogram(histogramModelXValue);
+        drawingPanelX.setBackground(Color.CYAN);
+        drawingPanelX.setBorder(BorderFactory.createLineBorder(Color.BLACK, 1));
+        drawingPanelX.add(titleHistogramVariable1);
 
         // Histogram Variable 2
-        histogramModel1 = new HistogramModel(dataModel.getVariableY());
-        drawingPane2 = new Histogram(histogramModel1);
-        drawingPane2.setBackground(Color.RED);
-        drawingPane2.add(titleHistogramVariable2);
+        HistogramModel histogramModelYValue = new HistogramModel(dataModel.getVariableY());
+        Histogram drawingPanelY = new Histogram(histogramModelYValue);
+        drawingPanelY.setBackground(Color.RED);
+        drawingPanelY.setBorder(BorderFactory.createLineBorder(Color.BLACK, 1));
+        drawingPanelY.add(titleHistogramVariable2);
 
 
-        histoPanel.add(drawingPanel);
-        histoPanel.add(drawingPane2);
+        histoPanel.add(drawingPanelX);
+        histoPanel.add(drawingPanelY);
 
     }
 }
