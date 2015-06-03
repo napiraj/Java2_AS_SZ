@@ -28,8 +28,9 @@ public class ColumnorientedDataLoader implements DataLoader{
         variableName1 = line.split("\t")[0];
         String variableName2 = line.split("\t")[1];
         while(inputScanner.hasNextLine()) {
-            String valueRead1 = inputScanner.next();
-            String valueRead2= inputScanner.next();
+            String lineValue = inputScanner.nextLine();
+            String valueRead1 = lineValue.split("\t")[0];
+            String valueRead2 = lineValue.split("\t")[1];
             valuesList1.add(Double.parseDouble(valueRead1));
             valuesList2.add(Double.parseDouble(valueRead2));
 
