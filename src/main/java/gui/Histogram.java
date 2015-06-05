@@ -1,6 +1,7 @@
 package gui;
 
 import model.HistogramModel;
+import model.Variable;
 
 import javax.swing.*;
 import java.awt.*;
@@ -10,34 +11,35 @@ import java.awt.*;
  */
 public class Histogram extends JPanel{
 
-
-
-
     private HistogramModel histogramModel;
     private double classes;
-    private double countValuesPerClass;
-    private double coefficient;
+    private Variable var;
 
-    public Histogram(HistogramModel histogramModel) {
+
+
+
+    public Histogram(HistogramModel histogramModel)
+    {
         this.histogramModel = histogramModel;
-        classes=histogramModel.getCountClasses();
-        for(int i=0;i<classes;i++) {
-            countValuesPerClass = histogramModel.getCounterValues(i);
+        this.classes = histogramModel.getCountClasses();
+
+        for(int i=0;i<classes;i++)
+        {
+            double countValuesPerClass = histogramModel.getCounterValues(i);
         }
-
-
     }
 
 
    @Override
     protected void paintComponent(Graphics g) {
-        int barWidth = (int) (getWidth() / classes); //width = Breite, Methode holt sich die min. Breite des Frame + teilt sie durch Arraygrösse
+       super.paintComponent(g);
+        int barWidth = (int) (getWidth() / classes);
         for (int i = 0; i <classes ; i++) {
             double value = histogramModel.getCounterValues(i);
-            coefficient=0.87*getHeight()/histogramModel.getHighestBar();
+            double coefficient=0.87*getHeight()/histogramModel.getHighestBar();
             int barHeight = (int) (value*coefficient);
 
-            int x = (int) ((int) i * barWidth);
+            int x = i * barWidth;
             int y = getHeight() - barHeight;
 
             g.setColor(Color.BLUE);
@@ -47,7 +49,6 @@ public class Histogram extends JPanel{
         }
 
     }
-
 }
 
 

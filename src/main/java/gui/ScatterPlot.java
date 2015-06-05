@@ -7,7 +7,7 @@ import java.awt.*;
 import java.util.ArrayList;
 
 /**
- * Created by Alexandra on 20.05.2015.
+ * Created by Alexandra Stümer und Sabrina Zgraggen LST 13 VZ
  */
 public class ScatterPlot extends JPanel{
 
@@ -46,16 +46,22 @@ public class ScatterPlot extends JPanel{
     }
 
 
-    public void setVariable(Variable variable1, Variable variable2)
+    public void setVariable(Variable variable1)
     {
         this.xaxis = variable1;
+        repaint();
+    }
+
+    public void setVariable2(Variable variable2)
+    {
         this.yaxis = variable2;
         repaint();
     }
 
+
     public ScatterPlot(Variable variable1, Variable variable2){
 
-        this.xaxis= variable1;
+        this.xaxis = variable1;
         this.yaxis=variable2;
         this.dot_color = Color.BLACK;
     }

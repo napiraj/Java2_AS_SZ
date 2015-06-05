@@ -6,29 +6,34 @@ import java.lang.Math;
 /**
  * Created by Alexandra on 27.05.2015.
  *
- * Bekommen eine Liste von Werten--> in Klassen einteilen, h�he ver�ndern
  */
 public class HistogramModel {
     private double countClasses;
     private ArrayList<Integer> counterValues;
+    private Variable varHistogram;
 
 
+    public void setVariableOfHistogramm(Variable variableHisto)
+    {
+        this.varHistogram = variableHisto;
 
-    public HistogramModel( Variable varHistogram1){
-        if(varHistogram1==null) {
+    }
+
+    public HistogramModel(Variable varHistogram){
+        if(varHistogram==null) {
             return;
-        }
+       }
 
        ArrayList<Double> values1= new ArrayList<Double>();
        this.counterValues = new ArrayList<Integer>();
 
-       values1=varHistogram1.getValues();
+       values1 = varHistogram.getValues();
 
 
         this.countClasses=Math.round((double) ((Math.sqrt(values1.size()))));
-        double diffMaxMin =Math.ceil((double)varHistogram1.getMax()- varHistogram1.getMin());// rundet immer auf
-        double belowclass=varHistogram1.getMin();
-        double smallest=varHistogram1.getMin();
+        double diffMaxMin =Math.ceil((double)varHistogram.getMax()- varHistogram.getMin());// rundet immer auf
+        double belowclass=varHistogram.getMin();
+        double smallest=varHistogram.getMin();
         double upperclass=0;
         double realClassWidth=diffMaxMin /countClasses;
         int counter=0;
@@ -53,7 +58,6 @@ public class HistogramModel {
             counter=0;
 
             belowclass=upperclass;
-
 
         }
     }
@@ -83,7 +87,5 @@ public class HistogramModel {
 
         return highestBar;
     }
-
-
 
 }
