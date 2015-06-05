@@ -23,12 +23,13 @@ public class HistogramModel {
 
 
     public HistogramModel( Variable varHistogram1){
-
-       this.values1= new ArrayList<Double>();
+        if(varHistogram1==null) {
+            return;
+        }
+            this.values1= new ArrayList<Double>();
        this.counterValues = new ArrayList<Integer>();
 
        this.values1=varHistogram1.getValues();
-
 
 
         this.countClasses=Math.round((double) ((Math.sqrt(values1.size()))));
