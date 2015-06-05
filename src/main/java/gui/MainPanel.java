@@ -17,6 +17,7 @@ public class MainPanel extends JPanel {
     private JComboBox pointSize;
     private JCheckBox lineButton;
     private Integer selectedSize;
+    private JComboBox selectedVariable;
 
     public MainPanel(DataModel dataModel) {
 
@@ -96,6 +97,21 @@ public class MainPanel extends JPanel {
                     drawingScatterPlot.setDotColor(dotColor);
                 }
             }});
+
+        this.selectedVariable = new JComboBox();
+
+
+            selectedVariable.addItem(dataModel.getAllVariable().toString());
+
+
+        selectedVariable.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                selectedItem = (Integer) selectedVariable.getSelectedItem();
+                drawingScatterPlot.setDotSize(selectedItem);
+            }
+        });
 
         buttonPanel.add(colorButton);
 
