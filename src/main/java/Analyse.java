@@ -18,6 +18,8 @@ public class Analyse {
 
     public static void main(String[] args) {
         String name = "";
+
+        //File Chooser
         JFileChooser chooser = new JFileChooser(System.getProperty("user.dir"));
         FileNameExtensionFilter filter = new FileNameExtensionFilter("TXT & LIN Files","txt","lin");
         chooser.setAcceptAllFileFilterUsed(false);
@@ -44,7 +46,6 @@ public class Analyse {
             name = selectedFile.getName();
 
         }
-
 
 
         DataLoader loader= null;
@@ -76,10 +77,6 @@ public class Analyse {
                 frame.setTitle(name);
                 frame.setVisible(true);
             }
-
-
-
-
 
     }
 

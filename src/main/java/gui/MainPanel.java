@@ -40,9 +40,6 @@ public class MainPanel extends JPanel {
 
         this.add(buttonPanel, BorderLayout.EAST);
 
-        //JLabel titleHistogramVariable1 = new JLabel(dataModel.getVariableX().getName());
-        //JLabel titleHistogramVariable2 = new JLabel(dataModel.getVariableY().getName());
-
 
         JLabel titleScatterPlot = new JLabel("ScatterPlot: ");
 
@@ -52,8 +49,11 @@ public class MainPanel extends JPanel {
         scatterPanel.add(titleScatterPlot);
         add(scatterPanel, BorderLayout.CENTER);
 
-        this.selectedVariable = new JComboBox<String>();
+        JLabel titelHistogrammVariable = new JLabel((Icon) selectedItem); // geht nicht???
+        JLabel titelHistogrammVariable2 = new JLabel((Icon) selectedItem2); // geht nicht??
 
+
+        this.selectedVariable = new JComboBox<String>();
 
         for(Variable var : dataModel.getAllVariable()){
             selectedVariable.addItem(var);
@@ -64,14 +64,13 @@ public class MainPanel extends JPanel {
             public void actionPerformed(ActionEvent e) {
 
                 selectedItem = (Variable) selectedVariable.getSelectedItem();
-                selectedVariable.SelectedItem().getAllVariable()
             }
         });
 
+        selectedVariable.setSelectedItem(dataModel.getAllVariable().get(0));
         buttonPanel.add(selectedVariable);
 
         this.secondselectedVariable = new JComboBox<Variable>();
-
 
         for(Variable var : dataModel.getAllVariable()){
             secondselectedVariable.addItem(var);
@@ -85,6 +84,7 @@ public class MainPanel extends JPanel {
             }
         });
 
+        secondselectedVariable.setSelectedItem(dataModel.getAllVariable().get(1));
         buttonPanel.add(secondselectedVariable);
 
 
@@ -120,7 +120,7 @@ public class MainPanel extends JPanel {
 
                 drawingScatterPlot.setDrawLine(lineButton.isSelected());
 
-            }});
+        }});
 
 
         buttonPanel.add(lineButton);
@@ -153,18 +153,19 @@ public class MainPanel extends JPanel {
         Histogram drawingPanelX = new Histogram(histogramModelXValue);
         drawingPanelX.setBackground(Color.CYAN);
         drawingPanelX.setBorder(BorderFactory.createLineBorder(Color.BLACK, 1));
-        //drawingPanelX.add(titleHistogramVariable1);
+        drawingPanelX.add(titelHistogrammVariable);
 
         // Histogram Variable 2
         HistogramModel histogramModelYValue = new HistogramModel(selectedItem2);
         Histogram drawingPanelY = new Histogram(histogramModelYValue);
         drawingPanelY.setBackground(Color.RED);
         drawingPanelY.setBorder(BorderFactory.createLineBorder(Color.BLACK, 1));
-        //drawingPanelY.add(titleHistogramVariable2);
+        drawingPanelY.add(titelHistogrammVariable2);
 
 
         histoPanel.add(drawingPanelX);
         histoPanel.add(drawingPanelY);
 
     }
+
 }

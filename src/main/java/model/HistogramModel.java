@@ -9,16 +9,8 @@ import java.lang.Math;
  * Bekommen eine Liste von Werten--> in Klassen einteilen, h�he ver�ndern
  */
 public class HistogramModel {
-    private ArrayList<Double> values1 ;
     private double countClasses;
-    private double diffMaxMin;
-    private double belowclass;
-    private double upperclass;
-    private double realClassWidth;
-    private int counter;
     private ArrayList<Integer> counterValues;
-    private double smallest;
-    private double highestBar;
 
 
 
@@ -26,24 +18,25 @@ public class HistogramModel {
         if(varHistogram1==null) {
             return;
         }
-            this.values1= new ArrayList<Double>();
+
+       ArrayList<Double> values1= new ArrayList<Double>();
        this.counterValues = new ArrayList<Integer>();
 
-       this.values1=varHistogram1.getValues();
+       values1=varHistogram1.getValues();
 
 
         this.countClasses=Math.round((double) ((Math.sqrt(values1.size()))));
-        this.diffMaxMin =Math.ceil((double)varHistogram1.getMax()- varHistogram1.getMin());// rundet immer auf
-        this.belowclass=varHistogram1.getMin();
-        this.smallest=varHistogram1.getMin();
-        this.upperclass=0;
-        this.realClassWidth=diffMaxMin /countClasses;
-        this.counter=0;
+        double diffMaxMin =Math.ceil((double)varHistogram1.getMax()- varHistogram1.getMin());// rundet immer auf
+        double belowclass=varHistogram1.getMin();
+        double smallest=varHistogram1.getMin();
+        double upperclass=0;
+        double realClassWidth=diffMaxMin /countClasses;
+        int counter=0;
 
             int a=0;
 
         for(int i=0; i< countClasses;i++){
-            this.upperclass = belowclass+realClassWidth+0.01;
+            upperclass = belowclass+realClassWidth+0.01;
             belowclass=belowclass-0.01;
 
             while(a<(values1.size()) ){
@@ -74,14 +67,12 @@ public class HistogramModel {
     public int getCounterValues(int index){
         return this.counterValues.get(index);
 
-
-
     }
 
 
 
     public double getHighestBar(){
-        highestBar= counterValues.get(0);
+        double highestBar= counterValues.get(0);
 
         for (int i= 1; i<counterValues.size();i++) {
             if (counterValues.get(i) > highestBar) {

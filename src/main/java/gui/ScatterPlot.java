@@ -15,8 +15,6 @@ public class ScatterPlot extends JPanel{
     private Variable yaxis;
     private int radius;
     private int dotSize=10;
-    // private final double WIDTH_FACTOR = 0.055;
-    private final double HEIGHT_FACTOR = 0.14;
     private boolean drawLine;
 
     public Color getDot_color() {
@@ -32,7 +30,7 @@ public class ScatterPlot extends JPanel{
 
     public int getDotSize() {
 
-        dotSize = radius * dotSize;
+        this.dotSize = radius * dotSize;
         return this.dotSize;
     }
 
@@ -54,7 +52,6 @@ public class ScatterPlot extends JPanel{
         this.xaxis= variable1;
         this.yaxis=variable2;
         this.dot_color = Color.BLACK;
-
     }
 
 
@@ -75,9 +72,7 @@ public class ScatterPlot extends JPanel{
         double panelWidth=getWidth();
         double panelHeight=getHeight();
         double height= (ymaxValue - yminValue);
-       // double ycoefficient= panelWidth/height;
-       // double xcoefficient= panelHeight/(xmaxValue-xminValue);
-        //double widthLimiter= WIDTH_FACTOR *panelWidth;
+        double HEIGHT_FACTOR = 0.14;
         double heightLimiter= HEIGHT_FACTOR *panelHeight;
         double x = 0;
         double y = 0;
@@ -102,8 +97,8 @@ public class ScatterPlot extends JPanel{
             }
 
 
-        //g.drawString(xaxis.getName(), (int) panelWidth/2, (int) panelHeight - radius);
-        //g.drawString(yaxis.getName(), (int) radius, (int) panelHeight/8);
+        g.drawString(xaxis.getName(), (int) panelWidth/2, (int) panelHeight - radius);
+        g.drawString(yaxis.getName(), (int) radius, (int) panelHeight/8);
 
     }
 
