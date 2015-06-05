@@ -48,6 +48,7 @@ public class ScatterPlot extends JPanel{
     }
 
 
+
     public ScatterPlot(Variable variable1, Variable variable2){
 
         this.xaxis= variable1;
@@ -55,6 +56,7 @@ public class ScatterPlot extends JPanel{
         this.dot_color = Color.BLACK;
 
     }
+
 
     @Override
     protected void paintComponent(Graphics g) {

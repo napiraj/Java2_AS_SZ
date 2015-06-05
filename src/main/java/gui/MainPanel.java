@@ -18,6 +18,9 @@ public class MainPanel extends JPanel {
     private JCheckBox lineButton;
     private Integer selectedSize;
     private JComboBox selectedVariable;
+    private Integer selectedItem;
+    private JComboBox secondselectedVariable;
+    private Integer selectedItem2;
 
     public MainPanel(DataModel dataModel) {
 
@@ -29,7 +32,7 @@ public class MainPanel extends JPanel {
 
         JPanel buttonPanel = new JPanel();
 
-        buttonPanel.setLayout(new GridLayout(4, 1));
+        buttonPanel.setLayout(new GridLayout(5, 1));
         buttonPanel.setBackground(Color.WHITE);
 
 
@@ -47,8 +50,38 @@ public class MainPanel extends JPanel {
         scatterPanel.add(titleScatterPlot);
         add(scatterPanel, BorderLayout.CENTER);
 
+        this.selectedVariable = new JComboBox();
 
-        this.drawingScatterPlot = new ScatterPlot(dataModel.getVariableX(), dataModel.getVariableY());
+
+        selectedVariable.addItem(dataModel.getAllVariable().toString());
+
+        this.selectedVariable.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                selectedItem = (Integer) selectedVariable.getSelectedItem();
+            }
+        });
+
+        buttonPanel.add(selectedVariable);
+
+        this.secondselectedVariable = new JComboBox();
+
+
+        secondselectedVariable.addItem(dataModel.getAllVariable().toString());
+
+        this.secondselectedVariable.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                selectedItem2 = (Integer) secondselectedVariable.getSelectedItem();
+            }
+        });
+
+        buttonPanel.add(secondselectedVariable);
+
+
+        this.drawingScatterPlot = new ScatterPlot(dataModel.getAllVariable().get(selectedItem), dataModel.getAllVariable().get(selectedItem2));
         scatterPanel.add(drawingScatterPlot);
 
         this.pointSize = new JComboBox();
@@ -98,22 +131,9 @@ public class MainPanel extends JPanel {
                 }
             }});
 
-        this.selectedVariable = new JComboBox();
-
-
-            selectedVariable.addItem(dataModel.getAllVariable().toString());
-
-
-        selectedVariable.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-
-                selectedItem = (Integer) selectedVariable.getSelectedItem();
-                drawingScatterPlot.setDotSize(selectedItem);
-            }
-        });
-
         buttonPanel.add(colorButton);
+
+
 
         JPanel histoPanel= new JPanel();
         histoPanel.setLayout(new BoxLayout(histoPanel, BoxLayout.LINE_AXIS));
@@ -122,14 +142,14 @@ public class MainPanel extends JPanel {
 
 
         // Histogram Valriable 1
-        HistogramModel histogramModelXValue = new HistogramModel(dataModel.getVariableX());
+        HistogramModel histogramModelXValue = new HistogramModel(dataModel.getAllVariable().get(selectedItem));
         Histogram drawingPanelX = new Histogram(histogramModelXValue);
         drawingPanelX.setBackground(Color.CYAN);
         drawingPanelX.setBorder(BorderFactory.createLineBorder(Color.BLACK, 1));
         //drawingPanelX.add(titleHistogramVariable1);
 
         // Histogram Variable 2
-        HistogramModel histogramModelYValue = new HistogramModel(dataModel.getVariableY());
+        HistogramModel histogramModelYValue = new HistogramModel(dataModel.getAllVariable().get(selectedItem2));
         Histogram drawingPanelY = new Histogram(histogramModelYValue);
         drawingPanelY.setBackground(Color.RED);
         drawingPanelY.setBorder(BorderFactory.createLineBorder(Color.BLACK, 1));

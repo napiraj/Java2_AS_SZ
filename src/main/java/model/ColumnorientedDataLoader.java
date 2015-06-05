@@ -22,7 +22,7 @@ public class ColumnorientedDataLoader implements DataLoader{
         ArrayList<Double> valuesList2 = new ArrayList<Double>();
         Variable variable1 = null;
         Variable variable2 = null;
-        ArrayList<String> allValues = new ArrayList<>();
+        ArrayList<String> allValues = new ArrayList<String>();
 
         ArrayList<Variable> allVariables = new ArrayList<Variable>();
 
