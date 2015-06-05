@@ -16,12 +16,18 @@ public class Histogram extends JPanel{
     private Variable var;
 
 
+    /*public void getSelectedHistogramModel(Variable hist)
+    {
+        this.histogramModel = hist;
+        repaint();
+    }  */
 
 
     public Histogram(HistogramModel histogramModel)
     {
         this.histogramModel = histogramModel;
         this.classes = histogramModel.getCountClasses();
+
 
         for(int i=0;i<classes;i++)
         {

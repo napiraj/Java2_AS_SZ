@@ -58,6 +58,7 @@ public class MainPanel extends JPanel {
         scatterPanel.add(drawingScatterPlot);
 
 
+
         // select first Variable
         this.selectedVariable = new JComboBox<Variable>();
 
@@ -71,7 +72,8 @@ public class MainPanel extends JPanel {
 
                 selectedItem = (Variable) selectedVariable.getSelectedItem();
                 drawingScatterPlot.setVariable(selectedItem);
-                // histogramModelXValue.setVariableOfHistogramm(selectedItem); funktioniert nicht!!
+                histogramModelXValue.setVariableOfHistogramm(selectedItem); //geht nicht
+                getTopLevelAncestor().repaint(); //geht nicht
             }
         });
 
@@ -91,8 +93,8 @@ public class MainPanel extends JPanel {
 
                 selectedItem2 = (Variable) secondselectedVariable.getSelectedItem();
                 drawingScatterPlot.setVariable2(selectedItem2);
-                //histogramModelYValue.setVariableOfHistogramm(selectedItem2); funktioniert nicht!!
-
+                histogramModelYValue.setVariableOfHistogramm(selectedItem2); //geht nicht
+                getTopLevelAncestor().repaint(); //geht nicht
             }
         });
 

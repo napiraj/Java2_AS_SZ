@@ -16,7 +16,7 @@ public class HistogramModel {
     public void setVariableOfHistogramm(Variable variableHisto)
     {
         this.varHistogram = variableHisto;
-
+        // nicht hier this.getTopLevelAncestor().repaint();
     }
 
     public HistogramModel(Variable varHistogram){
@@ -72,8 +72,6 @@ public class HistogramModel {
         return this.counterValues.get(index);
 
     }
-
-
 
     public double getHighestBar(){
         double highestBar= counterValues.get(0);
