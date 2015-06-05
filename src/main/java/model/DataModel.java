@@ -22,7 +22,7 @@ public class DataModel {
         this.variables = variables;
     }
 
-    public Variable getVariableX(){
+   /* public Variable getVariableX(){
 
         // For Testing only
         if(variables != null && variables.get(0) != null) {
@@ -43,9 +43,12 @@ public class DataModel {
 
         return new Variable("dummy Variable");
 
-    }
+    }*/
 
-    // return all Variables
+    public ArrayList<Variable> getAllVariable()
+    {
+        return variables;
+    }
 
 
 
