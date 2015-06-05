@@ -2,6 +2,7 @@ package model;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -27,7 +28,41 @@ public class LineorientedDataLoader implements DataLoader {
         String line = inputScanner.nextLine();
         numberOfVariables = Double.parseDouble(line);
 
-        variableName1= inputScanner.nextLine();
+        ArrayList<Variable> allVariables = new ArrayList<Variable>();
+
+        // Read all variable names and add a variable each.
+        for(int a = 0; a < numberOfVariables; a++) {
+            String variableName = inputScanner.nextLine();
+            Variable variable = new Variable(variableName);
+            allVariables.add(variable);
+        }
+
+        // Read separator
+        String separator= inputScanner.nextLine();
+
+        // Read all values for each variable
+        for(int a = 0; a < numberOfVariables; a++) {
+            Variable variable = allVariables.get(a);
+
+
+
+            String valueLine = inputScanner.nextLine();
+            String[] values = valueLine.split(separator);
+
+            ArrayList<Double> valuesAsDouble = new ArrayList<Double>();
+
+            for(int i=0; i < values.length; i ++){
+                Double value = Double.parseDouble(values[i]);
+                valuesAsDouble.add(value);
+            }
+
+            variable.setValues(valuesAsDouble);
+        }
+
+        return new DataModel(allVariables);
+
+
+        /*variableName1= inputScanner.nextLine();
         variableName2= inputScanner.nextLine();
 
         String separator= inputScanner.nextLine();
@@ -45,14 +80,14 @@ public class LineorientedDataLoader implements DataLoader {
             for(int i=0; i<lineVariable2.length;i++) {
                 valuesList2.add(Double.parseDouble(lineVariable2[i]));
             }
-            variable1 = new Variable(variableName1, valuesList1);
-            variable2= new Variable(variableName2, valuesList2);
+            //variable1 = new Variable(, valuesList1);
+            //variable2= new Variable(variableName2, valuesList2);
 
 
-        }
+        }*/
 
 
-        return new DataModel(variable1,variable2);
+        //return new DataModel(variable1);
     }
 
 

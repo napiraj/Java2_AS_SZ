@@ -27,7 +27,7 @@ public class HistogramModel {
        this.values1= new ArrayList<Double>();
        this.counterValues = new ArrayList<Integer>();
 
-       this.values1=varHistogram1.getValue();
+       this.values1=varHistogram1.getValues();
 
 
 

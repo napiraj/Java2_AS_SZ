@@ -60,8 +60,8 @@ public class ScatterPlot extends JPanel{
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
 
-        ArrayList<Double> variable1 = xaxis.getValue();
-        ArrayList<Double> variable2 = yaxis.getValue();
+        ArrayList<Double> variable1 = xaxis.getValues();
+        ArrayList<Double> variable2 = yaxis.getValues();
 
         double yminValue = yaxis.getMin();
         double ymaxValue = yaxis.getMax();
@@ -100,8 +100,8 @@ public class ScatterPlot extends JPanel{
             }
 
 
-        g.drawString(xaxis.getName(), (int) panelWidth/2, (int) panelHeight - radius);
-        g.drawString(yaxis.getName(), (int) radius, (int) panelHeight/8);
+        //g.drawString(xaxis.getName(), (int) panelWidth/2, (int) panelHeight - radius);
+        //g.drawString(yaxis.getName(), (int) radius, (int) panelHeight/8);
 
     }
 

@@ -10,19 +10,32 @@ public class Variable {
 
     private ArrayList<Double> values;
 
+    public Variable(String name){
+        this.name = name;
+        this.values = new ArrayList<Double>();
+    }
+
     public Variable(String name, ArrayList<Double> valueVariable) {
 
         this.name= name;
         this.values= valueVariable;
     }
 
+    public void setValues(ArrayList<Double> values){
+        this.values = values;
+    }
+
+
+
+
     public String getName(){
         return this.name;
     }
 
-    public ArrayList getValue(){
+    public ArrayList getValues(){
         return this.values;
     }
+
 
     public int getNumberOfValue1(){
         return this.values.size();
@@ -58,7 +71,9 @@ public class Variable {
     }
 
 
-
-
+    @Override
+    public String toString(){
+        return name;
+    }
 
 }

@@ -14,34 +14,50 @@ import java.util.Scanner;
 public class ColumnorientedDataLoader implements DataLoader{
     public DataModel loadDataModel(File file) throws FileNotFoundException {
 
-        Scanner inputScanner=new Scanner(file);
+        Scanner inputScanner = new Scanner(file);
 
 
-        String variableName1=" ";
-        ArrayList<Double> valuesList1=new ArrayList<Double>();
-        ArrayList<Double> valuesList2= new ArrayList<Double>();
-        Variable variable1=null;
-        Variable variable2=null;
+        String variableName1 = " ";
+        ArrayList<Double> valuesList1 = new ArrayList<Double>();
+        ArrayList<Double> valuesList2 = new ArrayList<Double>();
+        Variable variable1 = null;
+        Variable variable2 = null;
+        ArrayList<String> allValues = new ArrayList<>();
 
+        ArrayList<Variable> allVariables = new ArrayList<Variable>();
 
         String line = inputScanner.nextLine();
-        variableName1 = line.split("\t")[0];
-        String variableName2 = line.split("\t")[1];
-        while(inputScanner.hasNextLine()) {
-            String lineValue = inputScanner.nextLine();
-            String valueRead1 = lineValue.split("\t")[0];
-            String valueRead2 = lineValue.split("\t")[1];
-            valuesList1.add(Double.parseDouble(valueRead1));
-            valuesList2.add(Double.parseDouble(valueRead2));
+        int numberOfVariables = 0;
+        numberOfVariables=line.split("\t").length;
 
-            variable1 = new Variable(variableName1, valuesList1);
-            variable2= new Variable(variableName2, valuesList2);
-
-
-
+        // Create one Variable per name
+        for (int i = 0; i < numberOfVariables; i++) {
+            String variableName = line.split("\t")[i];
+            allVariables.add(new Variable(variableName));
         }
 
-        return new DataModel(variable1,variable2);
-    }
+        // Read Values for each Variabel
+        while (inputScanner.hasNextLine()) {
+            String lineValues = inputScanner.nextLine();
+            String[] stringValues = lineValues.split("\t");
+
+            // for each Variable, parse current value and add it to the list of values.
+            for (int a = 0; a < numberOfVariables; a++) {
+                Double value = Double.parseDouble(stringValues[a]);
+
+                Variable variable = allVariables.get(a);
+
+                ArrayList<Double> actualValues = variable.getValues();
+                actualValues.add(value);
+
+                variable.setValues(actualValues);
+            }
+        }
+
+            DataModel model = new DataModel(allVariables);
+
+            return model;
+        }
+
 
 }

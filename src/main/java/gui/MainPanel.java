@@ -34,8 +34,8 @@ public class MainPanel extends JPanel {
 
         this.add(buttonPanel, BorderLayout.EAST);
 
-        JLabel titleHistogramVariable1 = new JLabel(dataModel.getVariableX().getName());
-        JLabel titleHistogramVariable2 = new JLabel(dataModel.getVariableY().getName());
+        //JLabel titleHistogramVariable1 = new JLabel(dataModel.getVariableX().getName());
+        //JLabel titleHistogramVariable2 = new JLabel(dataModel.getVariableY().getName());
 
 
         JLabel titleScatterPlot = new JLabel("ScatterPlot: ");
@@ -110,14 +110,14 @@ public class MainPanel extends JPanel {
         Histogram drawingPanelX = new Histogram(histogramModelXValue);
         drawingPanelX.setBackground(Color.CYAN);
         drawingPanelX.setBorder(BorderFactory.createLineBorder(Color.BLACK, 1));
-        drawingPanelX.add(titleHistogramVariable1);
+        //drawingPanelX.add(titleHistogramVariable1);
 
         // Histogram Variable 2
         HistogramModel histogramModelYValue = new HistogramModel(dataModel.getVariableY());
         Histogram drawingPanelY = new Histogram(histogramModelYValue);
         drawingPanelY.setBackground(Color.RED);
         drawingPanelY.setBorder(BorderFactory.createLineBorder(Color.BLACK, 1));
-        drawingPanelY.add(titleHistogramVariable2);
+        //drawingPanelY.add(titleHistogramVariable2);
 
 
         histoPanel.add(drawingPanelX);
