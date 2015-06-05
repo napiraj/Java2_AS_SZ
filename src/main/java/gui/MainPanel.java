@@ -45,12 +45,10 @@ public class MainPanel extends JPanel {
 
         JPanel scatterPanel= new JPanel();
         scatterPanel.setLayout(new BoxLayout(scatterPanel, BoxLayout.PAGE_AXIS));
-        scatterPanel.setBackground(Color.GRAY);
+        scatterPanel.setBackground(Color.WHITE);
         scatterPanel.add(titleScatterPlot);
         add(scatterPanel, BorderLayout.CENTER);
 
-        JLabel titelHistogrammVariable = new JLabel((Icon) selectedItem); // geht nicht???
-        JLabel titelHistogrammVariable2 = new JLabel((Icon) selectedItem2); // geht nicht??
 
 
         this.selectedVariable = new JComboBox<String>();
@@ -64,6 +62,7 @@ public class MainPanel extends JPanel {
             public void actionPerformed(ActionEvent e) {
 
                 selectedItem = (Variable) selectedVariable.getSelectedItem();
+
             }
         });
 
@@ -109,6 +108,7 @@ public class MainPanel extends JPanel {
 
             }
         });
+        pointSize.setSelectedItem(10);
 
         buttonPanel.add(pointSize);
 
@@ -140,25 +140,26 @@ public class MainPanel extends JPanel {
 
         buttonPanel.add(colorButton);
 
-
+        JLabel titelHistogrammVariable = new JLabel(String.valueOf(selectedItem));
+        JLabel titelHistogrammVariable2 = new JLabel(String.valueOf(selectedItem2));
 
         JPanel histoPanel= new JPanel();
         histoPanel.setLayout(new BoxLayout(histoPanel, BoxLayout.LINE_AXIS));
-        histoPanel.setBackground(Color.GREEN);
+        histoPanel.setBackground(Color.CYAN);
         scatterPanel.add(histoPanel);
 
 
         // Histogram Valriable 1
         HistogramModel histogramModelXValue = new HistogramModel(selectedItem);
         Histogram drawingPanelX = new Histogram(histogramModelXValue);
-        drawingPanelX.setBackground(Color.CYAN);
+        drawingPanelX.setBackground(Color.WHITE);
         drawingPanelX.setBorder(BorderFactory.createLineBorder(Color.BLACK, 1));
         drawingPanelX.add(titelHistogrammVariable);
 
         // Histogram Variable 2
         HistogramModel histogramModelYValue = new HistogramModel(selectedItem2);
         Histogram drawingPanelY = new Histogram(histogramModelYValue);
-        drawingPanelY.setBackground(Color.RED);
+        drawingPanelY.setBackground(Color.WHITE);
         drawingPanelY.setBorder(BorderFactory.createLineBorder(Color.BLACK, 1));
         drawingPanelY.add(titelHistogrammVariable2);
 

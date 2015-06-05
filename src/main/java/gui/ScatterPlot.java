@@ -46,6 +46,12 @@ public class ScatterPlot extends JPanel{
     }
 
 
+    public void setVariable(Variable variable1, Variable variable2)
+    {
+        this.xaxis = variable1;
+        this.yaxis = variable2;
+        repaint();
+    }
 
     public ScatterPlot(Variable variable1, Variable variable2){
 
