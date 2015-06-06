@@ -1,6 +1,5 @@
 package model;
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by Alexandra Stümer und Sabrina Zgraggen LST VZ 2013 on 13.05.2015.

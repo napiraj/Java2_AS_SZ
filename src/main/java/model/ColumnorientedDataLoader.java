@@ -17,14 +17,11 @@ public class ColumnorientedDataLoader implements DataLoader{
     public DataModel loadDataModel(File file) throws FileNotFoundException {
 
         Scanner inputScanner = new Scanner(file);
-        String variableName1 = " ";
-        ArrayList<Double> valuesList1 = new ArrayList<Double>();
-        ArrayList<Double> valuesList2 = new ArrayList<Double>();
 
         ArrayList<Variable> allVariables = new ArrayList<Variable>();
         if(inputScanner.hasNextLine()) {
         String line = inputScanner.nextLine();
-        int numberOfVariables = 0;
+        int numberOfVariables;
         numberOfVariables=line.split("\t").length;
 
             // Create one Variable per name

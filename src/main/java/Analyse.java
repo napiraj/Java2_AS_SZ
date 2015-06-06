@@ -9,6 +9,7 @@ import javax.swing.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.Objects;
 import java.util.Scanner;
 
 /**
@@ -53,12 +54,12 @@ public class Analyse {
         DataLoader loader= null;
 
 
-        if ( formatTester(name)=="txt")
+        if (Objects.equals(formatTester(name), "txt"))
         {
             loader= new ColumnorientedDataLoader();
         }
 
-        else if( formatTester(name)=="lin")
+        else if(Objects.equals(formatTester(name), "lin"))
         {
             loader = new LineorientedDataLoader();
         }

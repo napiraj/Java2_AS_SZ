@@ -88,8 +88,8 @@ public class ScatterPlot extends JPanel{
         double height= (ymaxValue - yminValue);
         double HEIGHT_FACTOR = 0.14;
         double heightLimiter= HEIGHT_FACTOR *panelHeight;
-        double x = 0;
-        double y = 0;
+        double x;
+        double y;
 
 
             double previousValueX = 0;
@@ -111,8 +111,8 @@ public class ScatterPlot extends JPanel{
             }
 
 
-        g.drawString(xaxis.getName(), (int) panelWidth/2, (int) panelHeight - radius);
-        g.drawString(yaxis.getName(), (int) radius, (int) panelHeight/8);
+        g.drawString(xaxis.getName(), (int) panelWidth / 2, (int) panelHeight - radius);
+        g.drawString(yaxis.getName(), (int) radius, (int) panelHeight / 8);
 
 
     }
