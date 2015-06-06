@@ -30,6 +30,22 @@ public class MainPanel extends JPanel {
 
     public MainPanel(DataModel dataModel) {
 
+
+
+
+        /*this.selectedVariable.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent evt) {
+                itemSelected(evt);
+
+            }
+        });*/
+
+
+
+
+
+
         this.setLayout(new BorderLayout());
         this.setBackground(Color.BLACK);
 
@@ -97,7 +113,7 @@ public class MainPanel extends JPanel {
 
         this.secondselectedVariable.addActionListener(new ActionListener() {
             @Override
-            public void actionPerformed(ActionEvent e) {
+           public void actionPerformed(ActionEvent e) {
 
                 selectedItem2 = (Variable) secondselectedVariable.getSelectedItem();
                 drawingScatterPlot.setVariable2(selectedItem2);
@@ -196,4 +212,14 @@ public class MainPanel extends JPanel {
 
 
     }
+
+    /*private void itemSelected( ActionEvent evt){
+        selectedItem=(Variable)
+        selectedVariable.getSelectedItem();
+        drawingScatterPlot.setVariable(selectedItem);
+        histogramModelXValue.setVariableOfHistogramm(selectedItem);
+        this.getTopLevelAncestor();
+    }*/
+
+
 }
