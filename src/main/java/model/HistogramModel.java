@@ -27,8 +27,8 @@ public class HistogramModel {
        values1 = varHistogram.getValues();
 
 
-        this.countClasses=Math.round((double) ((Math.sqrt(values1.size()))));
-        double diffMaxMin =Math.ceil((double)varHistogram.getMax()- varHistogram.getMin());// rundet immer auf
+        this.countClasses=Math.round((Math.sqrt(values1.size())));
+        double diffMaxMin =Math.ceil(varHistogram.getMax() - varHistogram.getMin());// rundet immer auf
         double belowclass=varHistogram.getMin();
         double upperclass;
         double realClassWidth=diffMaxMin /countClasses;

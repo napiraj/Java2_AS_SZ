@@ -112,7 +112,7 @@ public class ScatterPlot extends JPanel{
 
 
         g.drawString(xaxis.getName(), (int) panelWidth / 2, (int) panelHeight - radius);
-        g.drawString(yaxis.getName(), (int) radius, (int) panelHeight / 8);
+        g.drawString(yaxis.getName(), radius, (int) panelHeight / 8);
 
 
     }

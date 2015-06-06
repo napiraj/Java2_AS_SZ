@@ -162,7 +162,7 @@ public class MainPanel extends JPanel {
         JLabel titelHistogrammVariable = new JLabel(String.valueOf(selectedItem));
         JLabel titelHistogrammVariable2 = new JLabel(String.valueOf(selectedItem2));
 
-        // Histogram Valriable 1
+        // Histogram Variable 1
         histogramModelXValue = new HistogramModel(selectedItem);
         drawingPanelX = new Histogram(histogramModelXValue);
         drawingPanelX.setBackground(Color.WHITE);
