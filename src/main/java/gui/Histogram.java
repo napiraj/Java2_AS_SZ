@@ -16,12 +16,19 @@ public class Histogram extends JPanel{
     private Variable var;
 
 
-    /*public void getSelectedHistogramModel(Variable hist)
-    {
-        this.histogramModel = hist;
-        repaint();
-    }  */
 
+
+
+
+    public void setAxis(HistogramModel histogramModel){
+        this.histogramModel=histogramModel;
+        this.classes=histogramModel.getCountClasses();
+        //bis hierhin läuft es
+
+        repaint();
+        System.out.println("countClass" + histogramModel.getCountClasses() + "\ncounterValues  " + histogramModel.getCounterValues(0) + "\nhighestbar: " + histogramModel.getHighestBar());
+
+    }
 
     public Histogram(HistogramModel histogramModel)
     {
@@ -34,6 +41,7 @@ public class Histogram extends JPanel{
             double countValuesPerClass = histogramModel.getCounterValues(i);
         }
     }
+
 
 
    @Override
@@ -52,6 +60,7 @@ public class Histogram extends JPanel{
             g.fillRect(x, y, barWidth, barHeight);
             g.setColor(Color.DARK_GRAY);
             g.drawRect(x, y, barWidth, barHeight);
+
         }
 
     }

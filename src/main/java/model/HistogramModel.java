@@ -17,12 +17,15 @@ public class HistogramModel {
     {
         this.varHistogram = variableHisto;
         // nicht hier this.getTopLevelAncestor().repaint();
+
     }
 
-    public HistogramModel(Variable varHistogram){
-        if(varHistogram==null) {
-            return;
-       }
+    public HistogramModel(Variable varHistogram) {
+        if (varHistogram == null) {
+            System.out.println("Fehler");;
+        }
+
+
 
        ArrayList<Double> values1= new ArrayList<Double>();
        this.counterValues = new ArrayList<Integer>();
