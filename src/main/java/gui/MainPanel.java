@@ -29,6 +29,8 @@ public class MainPanel extends JPanel {
     private HistogramModel histogramModelYValue;
 
     public MainPanel(DataModel dataModel) {
+        selectedItem=dataModel.getAllVariable().get(0);
+        selectedItem2=dataModel.getAllVariable().get(1);
 
 
 
@@ -61,7 +63,6 @@ public class MainPanel extends JPanel {
 
 
         JLabel titleScatterPlot = new JLabel("Scatter Plot: ");
-
 
         JPanel scatterPanel = new JPanel();
         scatterPanel.setLayout(new BoxLayout(scatterPanel, BoxLayout.PAGE_AXIS));
@@ -159,9 +160,6 @@ public class MainPanel extends JPanel {
 
         JLabel titelHistogrammVariable = new JLabel(String.valueOf(selectedItem));
         JLabel titelHistogrammVariable2 = new JLabel(String.valueOf(selectedItem2));
-        // die müssen als Default gesetzt werden.. hab nicht ganz verstanden wie du es gemacht hast
-        selectedItem=dataModel.getAllVariable().get(0);
-        selectedItem2=dataModel.getAllVariable().get(1);
 
         // Histogram Valriable 1
         histogramModelXValue = new HistogramModel(selectedItem);
