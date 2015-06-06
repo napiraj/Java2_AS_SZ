@@ -56,9 +56,7 @@ public class ColumnorientedDataLoader implements DataLoader{
             System.exit(-1);
         }
 
-            DataModel model = new DataModel(allVariables);
-
-            return model;
+        return new DataModel(allVariables);
         }
 
 

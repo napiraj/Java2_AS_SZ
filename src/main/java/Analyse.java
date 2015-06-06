@@ -82,7 +82,7 @@ public class Analyse {
 
     }
 
-    public static String formatTester(String file) {
+    private static String formatTester(String file) {
         String endung = "";
 
 
