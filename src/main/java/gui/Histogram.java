@@ -8,7 +8,8 @@ import java.awt.*;
 import java.util.ArrayList;
 
 /**
- * Created by Alexandra on 20.05.2015.
+ * Created by Alexandra Stümer and Sabrina Zraggen LST VZ 2013 on 20.05.2015.
+ *
  */
 public class Histogram extends JPanel{
 

@@ -3,7 +3,7 @@ import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 /**
- * Created by Alexandra on 13.05.2015.
+ * Created by Alexandra Stümer and Sabrina Zgraggen LST VZ 2013 on 13.05.2015.
  */
 public class Variable {
     private String name;
@@ -34,11 +34,6 @@ public class Variable {
 
     public ArrayList getValues(){
         return this.values;
-    }
-
-
-    public int getNumberOfValue1(){
-        return this.values.size();
     }
 
 

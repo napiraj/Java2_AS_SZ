@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.lang.Math;
 
 /**
- * Created by Alexandra on 27.05.2015.
+ * Created by Alexandra Stümer und Sabrina Zraggen LST VZ 2013 on 27.05.2015.
  *
  */
 public class HistogramModel {
@@ -12,13 +12,6 @@ public class HistogramModel {
     private ArrayList<Integer> counterValues;
     private Variable varHistogram;
 
-
-    public void setVariableOfHistogramm(Variable variableHisto)
-    {
-        this.varHistogram = variableHisto;
-        // nicht hier this.getTopLevelAncestor().repaint();
-
-    }
 
     public HistogramModel(Variable varHistogram) {
         if (varHistogram == null) {
@@ -28,7 +21,7 @@ public class HistogramModel {
 
 
 
-       ArrayList<Double> values1= new ArrayList<Double>();
+       ArrayList<Double> values1;
        this.counterValues = new ArrayList<Integer>();
 
        values1 = varHistogram.getValues();

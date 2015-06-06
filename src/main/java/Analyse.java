@@ -12,7 +12,9 @@ import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 /**
- * Created by Alexandra on 12.05.2015.
+ * Created by Alexandra Stümer und Sabrina Zgraggen LST VZ 2013 on 12.05.2015.
+ * Txt- oder lin-Dateien werden aufgerufen und je nachdem in der entsprechende Klasse weiterverarbeitet
+ *
  */
 public class Analyse {
 

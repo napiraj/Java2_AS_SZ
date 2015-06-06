@@ -7,7 +7,9 @@ import java.awt.*;
 import java.util.ArrayList;
 
 /**
- * Created by Alexandra StÃ¼mer und Sabrina Zgraggen LST 13 VZ
+ * Created by Alexandra Stümer und Sabrina Zgraggen LST 13 VZ
+ * Gibt das Scatterplot raus.
+ * Hier wird es gezeichnet; Punkte, Grösse, Farbe, Skalierung
  */
 public class ScatterPlot extends JPanel{
 

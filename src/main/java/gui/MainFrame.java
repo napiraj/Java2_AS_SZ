@@ -6,7 +6,8 @@ import javax.swing.*;
 import java.awt.*;
 
 /**
- * Created by Bina on 25.05.2015.
+ * Created by Alexandra Stümer und Sabrina Zgraggen LST VZ 2013 on 25.05.2015.
+ * Design des Frames
  */
 public class MainFrame extends JFrame{
 

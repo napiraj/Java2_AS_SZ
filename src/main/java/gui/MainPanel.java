@@ -11,7 +11,8 @@ import java.awt.event.ActionListener;
 
 
 /**
- * Created by Alexandra on 20.05.2015.
+ * Created by Alexandra Stümer und Sabrina Zgragge LST VZ 2013 on 20.05.2015.
+ * Behandelt das Layout des Frames und die ActionListener
  */
 public class MainPanel extends JPanel {
 
@@ -211,7 +212,7 @@ public class MainPanel extends JPanel {
         selectedItem=(Variable)
         selectedVariable.getSelectedItem();
         drawingScatterPlot.setVariable(selectedItem);
-        histogramModelXValue.setVariableOfHistogramm(selectedItem);
+
         this.getTopLevelAncestor();
     }*/
 
