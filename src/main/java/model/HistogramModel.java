@@ -22,7 +22,8 @@ public class HistogramModel {
 
     public HistogramModel(Variable varHistogram) {
         if (varHistogram == null) {
-            System.out.println("Fehler");;
+            System.out.println("Fehler");
+            System.exit(-1);
         }
 
 
@@ -71,8 +72,8 @@ public class HistogramModel {
         return countClasses;
     }
 
-    public int getCounterValues(int index){
-        return this.counterValues.get(index);
+    public ArrayList<Integer> getCounterValues(){
+        return this.counterValues;
 
     }
 
@@ -87,6 +88,10 @@ public class HistogramModel {
         }
 
         return highestBar;
+    }
+
+    public ArrayList<Integer> alleWerte(){
+        return counterValues;
     }
 
 }

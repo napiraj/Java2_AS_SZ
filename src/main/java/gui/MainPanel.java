@@ -80,26 +80,6 @@ public class MainPanel extends JPanel {
             selectedVariable.addItem(var);
         }
 
-        this.selectedVariable.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-
-                selectedItem = (Variable) selectedVariable.getSelectedItem();
-                drawingScatterPlot.setVariable(selectedItem);
-                histogramModelXValue = new HistogramModel(selectedItem);
-
-
-                // bis hierhin funktioniert es
-                drawingPanelX = new Histogram(histogramModelXValue);
-                drawingPanelX.setAxis(histogramModelXValue);
-
-
-
-                //histogramModelXValue.setVariableOfHistogramm(selectedItem);
-                //histogramModelXValue.setVariableOfHistogramm(selectedItem); //geht nicht
-                //getTopLevelAncestor().repaint(); //geht nicht
-            }
-        });
 
         selectedVariable.setSelectedItem(dataModel.getAllVariable().get(0));
         buttonPanel.add(selectedVariable);
@@ -111,18 +91,6 @@ public class MainPanel extends JPanel {
             secondselectedVariable.addItem(var);
         }
 
-        this.secondselectedVariable.addActionListener(new ActionListener() {
-            @Override
-           public void actionPerformed(ActionEvent e) {
-
-                selectedItem2 = (Variable) secondselectedVariable.getSelectedItem();
-                drawingScatterPlot.setVariable2(selectedItem2);
-                histogramModelYValue = new HistogramModel(selectedItem2);
-                //histogramModelYValue.setVariableOfHistogramm(selectedItem2);
-                //histogramModelYValue.setVariableOfHistogramm(selectedItem2); //geht nicht
-                //getTopLevelAncestor().repaint(); //geht nicht
-            }
-        });
 
         secondselectedVariable.setSelectedItem(dataModel.getAllVariable().get(1));
         buttonPanel.add(secondselectedVariable);
@@ -191,6 +159,9 @@ public class MainPanel extends JPanel {
 
         JLabel titelHistogrammVariable = new JLabel(String.valueOf(selectedItem));
         JLabel titelHistogrammVariable2 = new JLabel(String.valueOf(selectedItem2));
+        // die müssen als Default gesetzt werden.. hab nicht ganz verstanden wie du es gemacht hast
+        selectedItem=dataModel.getAllVariable().get(0);
+        selectedItem2=dataModel.getAllVariable().get(1);
 
         // Histogram Valriable 1
         histogramModelXValue = new HistogramModel(selectedItem);
@@ -205,6 +176,31 @@ public class MainPanel extends JPanel {
         drawingPanelY.setBackground(Color.WHITE);
         drawingPanelY.setBorder(BorderFactory.createLineBorder(Color.BLACK, 1));
         drawingPanelY.add(titelHistogrammVariable2);
+        this.selectedVariable.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                selectedItem = (Variable) selectedVariable.getSelectedItem();
+                drawingScatterPlot.setVariable(selectedItem);
+                histogramModelXValue = new HistogramModel(selectedItem);
+                drawingPanelX.setAxis(histogramModelXValue);
+                getTopLevelAncestor().repaint();
+            }
+        });
+        this.secondselectedVariable.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                selectedItem2 = (Variable) secondselectedVariable.getSelectedItem();
+                drawingScatterPlot.setVariable2(selectedItem2);
+                histogramModelYValue = new HistogramModel(selectedItem2);
+                drawingPanelY.setAxis(histogramModelYValue);
+
+                getTopLevelAncestor().repaint(); //geht nicht
+            }
+        });
+
+
 
 
         histoPanel.add(drawingPanelX);

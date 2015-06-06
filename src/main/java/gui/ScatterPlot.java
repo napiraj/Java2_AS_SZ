@@ -64,13 +64,13 @@ public class ScatterPlot extends JPanel{
         this.xaxis = variable1;
         this.yaxis=variable2;
         this.dot_color = Color.BLACK;
+
     }
 
 
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
-
         ArrayList<Double> variable1 = xaxis.getValues();
         ArrayList<Double> variable2 = yaxis.getValues();
 
@@ -111,6 +111,7 @@ public class ScatterPlot extends JPanel{
 
         g.drawString(xaxis.getName(), (int) panelWidth/2, (int) panelHeight - radius);
         g.drawString(yaxis.getName(), (int) radius, (int) panelHeight/8);
+
 
     }
 
