@@ -1,30 +1,28 @@
 package gui;
 
 import model.HistogramModel;
-import model.Variable;
 
 import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
 
 /**
- * Created by Alexandra Stümer and Sabrina Zgraggen LST VZ 2013 on 20.05.2015.
- *
+ * Created by Alexandra Stümer and Sabrina Zgraggen LST VZ 2013 on 2015.
+ * draws the histogram
  */
 public class Histogram extends JPanel{
 
     private HistogramModel histogramModel;
     private double classes;
-    private ArrayList<Integer> counterValues;
+    private ArrayList<Integer> counterOfValues;
     private double highestBar;
-
 
 
 
     public void setAxis(HistogramModel histogramModel){
         this.histogramModel=histogramModel;
         this.classes=histogramModel.getCountClasses();
-        this.counterValues=histogramModel.getCounterValues();
+        this.counterOfValues =histogramModel.getCounterValues();
         this.highestBar=histogramModel.getHighestBar();
         this.repaint();
 
@@ -32,26 +30,23 @@ public class Histogram extends JPanel{
 
     public Histogram(HistogramModel histogramModel)
     {
-
         this.histogramModel = histogramModel;
         this.classes = histogramModel.getCountClasses();
-        this.counterValues=histogramModel.getCounterValues();
+        this.counterOfValues =histogramModel.getCounterValues();
         this.highestBar=histogramModel.getHighestBar();
-
     }
 
 
    @Override
-   // hier liegt ein Problem vor, er painted die neue Werte nicht
     protected void paintComponent(Graphics g) {
-
        super.paintComponent(g);
+
        int width = getWidth();
-       int heigh = getHeight();
+       int height = getHeight();
         int barWidth = (int) (getWidth() / classes);
 
         for (int i = 0; i <classes ; i++) {
-            double value =counterValues.get(i);
+            double value = counterOfValues.get(i);
 
             double coefficient=0.87*getHeight()/highestBar;
             int barHeight = (int) (value*coefficient);
@@ -65,7 +60,7 @@ public class Histogram extends JPanel{
             g.drawRect(x, y, barWidth, barHeight);
 
 
-            g.drawString(histogramModel.getNameOfHistogramVariable(), width / 3, heigh / 12);
+            g.drawString(histogramModel.getNameOfHistogramVariable(), width / 3, height / 12);
         }
 
     }

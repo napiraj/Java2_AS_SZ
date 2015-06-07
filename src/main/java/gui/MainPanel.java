@@ -11,8 +11,8 @@ import java.awt.event.ActionListener;
 
 
 /**
- * Created by Alexandra St�mer und Sabrina Zgragge LST VZ 2013 on 20.05.2015.
- * Behandelt das Layout des Frames und die ActionListener
+ * Created by Alexandra Stümer und Sabrina Zgraggen LST VZ 2013 on 2015.
+ * draws the Main Panel components
  */
 public class MainPanel extends JPanel {
 
@@ -33,7 +33,6 @@ public class MainPanel extends JPanel {
 
         selectedItem=dataModel.getAllVariable().get(0);
         selectedItem2=dataModel.getAllVariable().get(1);
-
 
 
         this.setLayout(new BorderLayout());
@@ -77,7 +76,6 @@ public class MainPanel extends JPanel {
         for (Variable var : dataModel.getAllVariable()) {
             secondselectedVariable.addItem(var);
         }
-
 
         secondselectedVariable.setSelectedItem(dataModel.getAllVariable().get(1));
         buttonPanel.add(secondselectedVariable);

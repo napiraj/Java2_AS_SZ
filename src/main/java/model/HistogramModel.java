@@ -4,13 +4,12 @@ import java.util.ArrayList;
 import java.lang.Math;
 
 /**
- * Created by Alexandra Stümer und Sabrina Zgraggen LST VZ 2013 on 27.05.2015.
- *
+ * Created by Alexandra Stümer und Sabrina Zgraggen LST VZ 2013 on 2015.
  */
 public class HistogramModel {
     private double countClasses;
     private ArrayList<Integer> counterValues;
-    private String nameOfHistogramVariable;
+    //private String nameOfHistogramVariable;
     private ArrayList<Double> values1;
     private Variable varHistogram;
 
@@ -19,35 +18,36 @@ public class HistogramModel {
 
         this.varHistogram = varHistogram;
         if (varHistogram == null) {
-            System.out.println("Fehler");
+            System.out.println("Error");
             System.exit(-1);
         }
 
 
+        this.counterValues = new ArrayList<Integer>();
 
 
-       this.counterValues = new ArrayList<Integer>();
-
-       this.values1 = varHistogram.getValues();
+        this.values1 = varHistogram.getValues();
 
 
 
         this.countClasses=Math.round((Math.sqrt(values1.size())));
-        double diffMaxMin =Math.ceil(varHistogram.getMax() - varHistogram.getMin());// rundet immer auf
-        double belowclass=varHistogram.getMin();
-        double upperclass;
+
+        // round up
+        double diffMaxMin =Math.ceil(varHistogram.getMax() - varHistogram.getMin());
+        double lowerLimitOfClass=varHistogram.getMin();
+        double upperLimitOfClass;
         double realClassWidth=diffMaxMin /countClasses;
         int counter=0;
 
             int a=0;
 
         for(int i=0; i< countClasses;i++){
-            upperclass = belowclass+realClassWidth+0.01;
-            belowclass=belowclass-0.01;
+            upperLimitOfClass = lowerLimitOfClass+realClassWidth+0.01;
+            lowerLimitOfClass=lowerLimitOfClass-0.01;
 
             while(a<(values1.size()) ){
 
-                if((values1.get(a)<upperclass) && (values1.get(a)>belowclass)){
+                if((values1.get(a)<upperLimitOfClass) && (values1.get(a)>lowerLimitOfClass)){
                 counter++;
                 }
                 a++;
@@ -58,7 +58,7 @@ public class HistogramModel {
             a=0;
             counter=0;
 
-            belowclass=upperclass;
+            lowerLimitOfClass=upperLimitOfClass;
 
         }
     }
@@ -71,7 +71,7 @@ public class HistogramModel {
 
     public String getNameOfHistogramVariable()
     {
-        nameOfHistogramVariable = varHistogram.getName();
+        String nameOfHistogramVariable = varHistogram.getName();
         return nameOfHistogramVariable;
     }
 
@@ -93,8 +93,8 @@ public class HistogramModel {
         return highestBar;
     }
 
-    public ArrayList<Integer> allHistogramValues(){
+    /*public ArrayList<Integer> allHistogramValues(){
         return counterValues;
-    }
+    }*/
 
 }

@@ -1,5 +1,4 @@
 import gui.MainFrame;
-import gui.MainPanel;
 import model.ColumnorientedDataLoader;
 import model.DataLoader;
 import model.DataModel;
@@ -13,9 +12,7 @@ import java.util.Objects;
 import java.util.Scanner;
 
 /**
- * Created by Alexandra Stümer und Sabrina Zgraggen LST VZ 2013 on 12.05.2015.
- * Txt- oder lin-Dateien werden aufgerufen und je nachdem in der entsprechende Klasse weiterverarbeitet
- *
+ * Created by Alexandra Stümer und Sabrina Zgraggen LST VZ 2013 on 2015.
  */
 public class Analyse {
 
@@ -29,7 +26,7 @@ public class Analyse {
         chooser.setFileFilter(filter);
         int returnVal = chooser.showOpenDialog(null);
         if(returnVal == JFileChooser.CANCEL_OPTION) {
-            JOptionPane.showMessageDialog(null,"Es wurde keine Datei ausgewaehlt","No File",JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(null,"No File selected","No File",JOptionPane.WARNING_MESSAGE);
 
                     }
 
@@ -42,7 +39,7 @@ public class Analyse {
             try {
                 fileScanner = new Scanner(selectedFile);
             } catch (FileNotFoundException e) {
-                JOptionPane.showMessageDialog(null, "Datei existiert nicht mehr"+e.getMessage(), "No File", JOptionPane.WARNING_MESSAGE);
+                JOptionPane.showMessageDialog(null, "File exists no longer"+e.getMessage(), "No File", JOptionPane.WARNING_MESSAGE);
                  System.exit(-1);
             }
 
@@ -71,7 +68,7 @@ public class Analyse {
                 try {
                     dataModel= loader.loadDataModel(selectedFile);
                 } catch (FileNotFoundException e) {
-                    JOptionPane.showMessageDialog(null, "Datei kann nicht gelesen werden"+ e.getMessage(), "None File", JOptionPane.WARNING_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "File cannot be read"+ e.getMessage(), "None File", JOptionPane.WARNING_MESSAGE);
                     System.exit(-1);
                 }
 

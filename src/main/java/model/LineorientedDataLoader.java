@@ -7,10 +7,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
- * Created by Alexandra Stümer and Sabrina Zgraggen LST VZ 2013 on 12.05.2015.
- * Bearbeitet Lin-Datein als Zeilenorientierter Data Loader
- * 1.Zeile gibt uns die Anzahl der Variablen an. Dementsprechend sind die nächsten Zeilen, die Variablen
- * und dann kommen die Werte mit einem Seperator getrennt.
+ * Created by Alexandra StÃ¼mer and Sabrina Zgraggen LST VZ 2013 on 2015.
  */
 public class LineorientedDataLoader implements DataLoader {
     public DataModel loadDataModel(File file) throws FileNotFoundException {
@@ -56,12 +53,11 @@ public class LineorientedDataLoader implements DataLoader {
             variable.setValues(valuesAsDouble);
         }  }
         else{
-            JOptionPane.showMessageDialog(null, "Datei ist leer", "Empty File", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(null, "File is empty", "Empty File", JOptionPane.WARNING_MESSAGE);
             System.exit(-1);
         }
 
         return new DataModel(allVariables);
-
 
     }
 

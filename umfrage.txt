@@ -1,4 +1,4 @@
-Alter	Grösse	Gewicht	Anzahl CDs	Distanz von HLS [min]	Distanz von HLS [km]
+Alter	GrÃ¶sse	Gewicht	Anzahl CDs	Distanz von HLS [min]	Distanz von HLS [km]
 22	175	60	150	5	0.2
 22	173	64	15	2	0.4
 22	182	75	70	3	0.5

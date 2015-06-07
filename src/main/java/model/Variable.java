@@ -2,7 +2,7 @@ package model;
 import java.util.ArrayList;
 
 /**
- * Created by Alexandra Stümer and Sabrina Zgraggen LST VZ 2013 on 13.05.2015.
+ * Created by Alexandra StÃ¼mer and Sabrina Zgraggen LST VZ 2013 on 2015.
  */
 public class Variable {
     private String name;
@@ -14,18 +14,15 @@ public class Variable {
         this.values = new ArrayList<Double>();
     }
 
-    public Variable(String name, ArrayList<Double> valueVariable) {
+   /* public Variable(String name, ArrayList<Double> valueVariable) {
 
         this.name= name;
         this.values= valueVariable;
-    }
+    } */
 
     public void setValues(ArrayList<Double> values){
         this.values = values;
     }
-
-
-
 
     public String getName(){
         return this.name;

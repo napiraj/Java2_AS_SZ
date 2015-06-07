@@ -9,11 +9,11 @@ import java.util.Scanner;
 
 
 /**
- * Created by Alexandra Stümer and Sabrina Zgraggen LST VZ 2013 on 12.05.2015.
- * Bearbeitet txt-Dateien als spaltenorientiertes Data-Loader.
- * erste Zeile werden die Namen eingelesen und dann solange es Zeilen hat, die Werte
+ * Created by Alexandra Stümer and Sabrina Zgraggen LST VZ 2013 on 2015.
+ *
  */
 public class ColumnorientedDataLoader implements DataLoader{
+
     public DataModel loadDataModel(File file) throws FileNotFoundException {
 
         Scanner inputScanner = new Scanner(file);
@@ -30,7 +30,7 @@ public class ColumnorientedDataLoader implements DataLoader{
                 allVariables.add(new Variable(variableName));
             }
 
-            // Read Values for each Variabel
+            // Read Values for each Variable
             while (inputScanner.hasNextLine()) {
                 String lineValues = inputScanner.nextLine();
                 String[] stringValues = lineValues.split("\t");
@@ -49,12 +49,11 @@ public class ColumnorientedDataLoader implements DataLoader{
             }
         }
         else{
-            JOptionPane.showMessageDialog(null, "Datei ist leer", "Empty File", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(null, "File is empty", "Empty File", JOptionPane.WARNING_MESSAGE);
             System.exit(-1);
         }
 
         return new DataModel(allVariables);
         }
-
 
 }
