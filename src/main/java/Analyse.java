@@ -13,7 +13,7 @@ import java.util.Objects;
 import java.util.Scanner;
 
 /**
- * Created by Alexandra Stümer und Sabrina Zgraggen LST VZ 2013 on 12.05.2015.
+ * Created by Alexandra StÃ¼mer und Sabrina Zgraggen LST VZ 2013 on 12.05.2015.
  * Txt- oder lin-Dateien werden aufgerufen und je nachdem in der entsprechende Klasse weiterverarbeitet
  *
  */
@@ -74,7 +74,7 @@ public class Analyse {
                     JOptionPane.showMessageDialog(null, "Datei kann nicht gelesen werden"+ e.getMessage(), "None File", JOptionPane.WARNING_MESSAGE);
                     System.exit(-1);
                 }
-                //
+
                 // generate Frame
                 JFrame frame= new MainFrame(dataModel);
                 frame.setTitle(name);

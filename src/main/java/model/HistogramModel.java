@@ -4,16 +4,20 @@ import java.util.ArrayList;
 import java.lang.Math;
 
 /**
- * Created by Alexandra Stümer und Sabrina Zraggen LST VZ 2013 on 27.05.2015.
+ * Created by Alexandra Stümer und Sabrina Zgraggen LST VZ 2013 on 27.05.2015.
  *
  */
 public class HistogramModel {
     private double countClasses;
     private ArrayList<Integer> counterValues;
+    private String nameOfHistogramVariable;
+    private ArrayList<Double> values1;
     private Variable varHistogram;
 
 
     public HistogramModel(Variable varHistogram) {
+
+        this.varHistogram = varHistogram;
         if (varHistogram == null) {
             System.out.println("Fehler");
             System.exit(-1);
@@ -21,10 +25,11 @@ public class HistogramModel {
 
 
 
-       ArrayList<Double> values1;
+
        this.counterValues = new ArrayList<Integer>();
 
-       values1 = varHistogram.getValues();
+       this.values1 = varHistogram.getValues();
+
 
 
         this.countClasses=Math.round((Math.sqrt(values1.size())));
@@ -64,6 +69,12 @@ public class HistogramModel {
         return countClasses;
     }
 
+    public String getNameOfHistogramVariable()
+    {
+        nameOfHistogramVariable = varHistogram.getName();
+        return nameOfHistogramVariable;
+    }
+
     public ArrayList<Integer> getCounterValues(){
         return this.counterValues;
 
@@ -82,7 +93,7 @@ public class HistogramModel {
         return highestBar;
     }
 
-    public ArrayList<Integer> alleWerte(){
+    public ArrayList<Integer> allHistogramValues(){
         return counterValues;
     }
 

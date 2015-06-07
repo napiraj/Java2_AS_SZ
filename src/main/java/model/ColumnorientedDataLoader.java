@@ -9,7 +9,7 @@ import java.util.Scanner;
 
 
 /**
- * Created by Alexandra Stümer and Sabrina Zgraggen LST VZ 2013 on 12.05.2015.
+ * Created by Alexandra StÃ¼mer and Sabrina Zgraggen LST VZ 2013 on 12.05.2015.
  * Bearbeitet txt-Dateien als spaltenorientiertes Data-Loader.
  * erste Zeile werden die Namen eingelesen und dann solange es Zeilen hat, die Werte
  */

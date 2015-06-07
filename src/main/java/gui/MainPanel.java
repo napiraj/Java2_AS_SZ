@@ -11,7 +11,7 @@ import java.awt.event.ActionListener;
 
 
 /**
- * Created by Alexandra Stümer und Sabrina Zgragge LST VZ 2013 on 20.05.2015.
+ * Created by Alexandra Stï¿½mer und Sabrina Zgragge LST VZ 2013 on 20.05.2015.
  * Behandelt das Layout des Frames und die ActionListener
  */
 public class MainPanel extends JPanel {
@@ -30,30 +30,15 @@ public class MainPanel extends JPanel {
     private HistogramModel histogramModelYValue;
 
     public MainPanel(DataModel dataModel) {
+
         selectedItem=dataModel.getAllVariable().get(0);
         selectedItem2=dataModel.getAllVariable().get(1);
-
-
-
-
-        /*this.selectedVariable.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent evt) {
-                itemSelected(evt);
-
-            }
-        });*/
-
-
-
 
 
 
         this.setLayout(new BorderLayout());
         this.setBackground(Color.BLACK);
 
-
-        //getTopLevelAncestor().repaint(); ruft das Frame auf um alles neu zu zeichnen
 
         JPanel buttonPanel = new JPanel();
         buttonPanel.setLayout(new GridLayout(5, 1));
@@ -159,22 +144,20 @@ public class MainPanel extends JPanel {
         histoPanel.setBackground(Color.CYAN);
         scatterPanel.add(histoPanel);
 
-        JLabel titelHistogrammVariable = new JLabel(String.valueOf(selectedItem));
-        JLabel titelHistogrammVariable2 = new JLabel(String.valueOf(selectedItem2));
 
         // Histogram Variable 1
         histogramModelXValue = new HistogramModel(selectedItem);
         drawingPanelX = new Histogram(histogramModelXValue);
         drawingPanelX.setBackground(Color.WHITE);
         drawingPanelX.setBorder(BorderFactory.createLineBorder(Color.BLACK, 1));
-        drawingPanelX.add(titelHistogrammVariable);
+
 
         // Histogram Variable 2
         histogramModelYValue = new HistogramModel(selectedItem2);
         drawingPanelY = new Histogram(histogramModelYValue);
         drawingPanelY.setBackground(Color.WHITE);
         drawingPanelY.setBorder(BorderFactory.createLineBorder(Color.BLACK, 1));
-        drawingPanelY.add(titelHistogrammVariable2);
+
         this.selectedVariable.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -194,12 +177,9 @@ public class MainPanel extends JPanel {
                 drawingScatterPlot.setVariable2(selectedItem2);
                 histogramModelYValue = new HistogramModel(selectedItem2);
                 drawingPanelY.setAxis(histogramModelYValue);
-
-                getTopLevelAncestor().repaint(); //geht nicht
+                getTopLevelAncestor().repaint();
             }
         });
-
-
 
 
         histoPanel.add(drawingPanelX);
@@ -207,14 +187,5 @@ public class MainPanel extends JPanel {
 
 
     }
-
-    /*private void itemSelected( ActionEvent evt){
-        selectedItem=(Variable)
-        selectedVariable.getSelectedItem();
-        drawingScatterPlot.setVariable(selectedItem);
-
-        this.getTopLevelAncestor();
-    }*/
-
 
 }

@@ -8,19 +8,15 @@ import java.awt.*;
 import java.util.ArrayList;
 
 /**
- * Created by Alexandra Stümer and Sabrina Zraggen LST VZ 2013 on 20.05.2015.
+ * Created by Alexandra Stümer and Sabrina Zgraggen LST VZ 2013 on 20.05.2015.
  *
  */
 public class Histogram extends JPanel{
 
     private HistogramModel histogramModel;
     private double classes;
-    private Variable var;
     private ArrayList<Integer> counterValues;
     private double highestBar;
-
-
-
 
 
 
@@ -32,8 +28,6 @@ public class Histogram extends JPanel{
         this.highestBar=histogramModel.getHighestBar();
         this.repaint();
 
-
-
     }
 
     public Histogram(HistogramModel histogramModel)
@@ -44,25 +38,16 @@ public class Histogram extends JPanel{
         this.counterValues=histogramModel.getCounterValues();
         this.highestBar=histogramModel.getHighestBar();
 
-
-
-
-
-        /*for(int i=0;i<classes;i++)
-        {
-            double countValuesPerClass = histogramModel.getCounterValues(i);
-        }
-        */
     }
-
 
 
    @Override
    // hier liegt ein Problem vor, er painted die neue Werte nicht
     protected void paintComponent(Graphics g) {
 
-
        super.paintComponent(g);
+       int width = getWidth();
+       int heigh = getHeight();
         int barWidth = (int) (getWidth() / classes);
 
         for (int i = 0; i <classes ; i++) {
@@ -80,8 +65,7 @@ public class Histogram extends JPanel{
             g.drawRect(x, y, barWidth, barHeight);
 
 
-
-
+            g.drawString(histogramModel.getNameOfHistogramVariable(), width / 3, heigh / 12);
         }
 
     }
