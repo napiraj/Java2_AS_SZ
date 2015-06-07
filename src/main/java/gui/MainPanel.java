@@ -24,8 +24,8 @@ public class MainPanel extends JPanel {
     private Variable selectedItem;
     private JComboBox secondselectedVariable;
     private Variable selectedItem2;
-    private Histogram drawingPanelX;
-    private Histogram drawingPanelY;
+    private HistogramPanel drawingPanelX;
+    private HistogramPanel drawingPanelY;
     private HistogramModel histogramModelXValue;
     private HistogramModel histogramModelYValue;
 
@@ -145,14 +145,14 @@ public class MainPanel extends JPanel {
 
         // Histogram Variable 1
         histogramModelXValue = new HistogramModel(selectedItem);
-        drawingPanelX = new Histogram(histogramModelXValue);
+        drawingPanelX = new HistogramPanel(histogramModelXValue);
         drawingPanelX.setBackground(Color.WHITE);
         drawingPanelX.setBorder(BorderFactory.createLineBorder(Color.BLACK, 1));
 
 
         // Histogram Variable 2
         histogramModelYValue = new HistogramModel(selectedItem2);
-        drawingPanelY = new Histogram(histogramModelYValue);
+        drawingPanelY = new HistogramPanel(histogramModelYValue);
         drawingPanelY.setBackground(Color.WHITE);
         drawingPanelY.setBorder(BorderFactory.createLineBorder(Color.BLACK, 1));
 

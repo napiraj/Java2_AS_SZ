@@ -10,7 +10,7 @@ import java.util.ArrayList;
  * Created by Alexandra Stümer and Sabrina Zgraggen LST VZ 2013 on 2015.
  * draws the histogram
  */
-public class Histogram extends JPanel{
+public class HistogramPanel extends JPanel{
 
     private HistogramModel histogramModel;
     private double classes;
@@ -28,7 +28,7 @@ public class Histogram extends JPanel{
 
     }
 
-    public Histogram(HistogramModel histogramModel)
+    public HistogramPanel(HistogramModel histogramModel)
     {
         this.histogramModel = histogramModel;
         this.classes = histogramModel.getCountClasses();
