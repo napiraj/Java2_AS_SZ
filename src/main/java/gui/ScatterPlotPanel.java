@@ -10,7 +10,7 @@ import java.util.ArrayList;
  * Created by Alexandra Stümer und Sabrina Zgraggen LST 13 VZ on 2015
  * draws the scatter plot
  */
-public class ScatterPlot extends JPanel{
+public class ScatterPlotPanel extends JPanel{
 
     private Variable xaxis;
     private Variable yaxis;
@@ -26,12 +26,6 @@ public class ScatterPlot extends JPanel{
         this.dot_color = dot_color;
         this.repaint();
     }
-
-    /*public int getDotSize() {
-
-        this.dotSize = radius * dotSize;
-        return this.dotSize;
-    }*/
 
     public void setDotSize(int pointSize) {
         this.dotSize = pointSize;
@@ -58,7 +52,7 @@ public class ScatterPlot extends JPanel{
     }
 
 
-    public ScatterPlot(Variable variable1, Variable variable2){
+    public ScatterPlotPanel(Variable variable1, Variable variable2){
 
         this.xaxis = variable1;
         this.yaxis=variable2;

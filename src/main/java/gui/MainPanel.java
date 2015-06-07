@@ -16,7 +16,7 @@ import java.awt.event.ActionListener;
  */
 public class MainPanel extends JPanel {
 
-    private ScatterPlot drawingScatterPlot;
+    private ScatterPlotPanel drawingScatterPlotPanel;
     private JComboBox pointSize;
     private JCheckBox lineButton;
     private Integer selectedSize;
@@ -56,8 +56,8 @@ public class MainPanel extends JPanel {
         add(scatterPanel, BorderLayout.CENTER);
 
         // new Scatter Plot
-        this.drawingScatterPlot = new ScatterPlot(selectedItem, selectedItem2);
-        scatterPanel.add(drawingScatterPlot);
+        this.drawingScatterPlotPanel = new ScatterPlotPanel(selectedItem, selectedItem2);
+        scatterPanel.add(drawingScatterPlotPanel);
 
         // select first Variable
         this.selectedVariable = new JComboBox<Variable>();
@@ -96,7 +96,7 @@ public class MainPanel extends JPanel {
               public void actionPerformed(ActionEvent e)
               {
                   selectedSize = (Integer) pointSize.getSelectedItem();
-                  drawingScatterPlot.setDotSize(selectedSize);
+                  drawingScatterPlotPanel.setDotSize(selectedSize);
 
               }
         });
@@ -113,7 +113,7 @@ public class MainPanel extends JPanel {
             public void actionPerformed(ActionEvent e)
             {
 
-                drawingScatterPlot.setDrawLine(lineButton.isSelected());
+                drawingScatterPlotPanel.setDrawLine(lineButton.isSelected());
             }
         });
 
@@ -130,7 +130,7 @@ public class MainPanel extends JPanel {
                  Color dotColor = JColorChooser.showDialog(null, "Choose a Color", Color.black);
                         if (dotColor != null)
                         {
-                              drawingScatterPlot.setDotColor(dotColor);
+                              drawingScatterPlotPanel.setDotColor(dotColor);
                         }
              }
         });
@@ -161,7 +161,7 @@ public class MainPanel extends JPanel {
             public void actionPerformed(ActionEvent e) {
 
                 selectedItem = (Variable) selectedVariable.getSelectedItem();
-                drawingScatterPlot.setVariable(selectedItem);
+                drawingScatterPlotPanel.setVariable(selectedItem);
                 histogramModelXValue = new HistogramModel(selectedItem);
                 drawingPanelX.setAxis(histogramModelXValue);
                 getTopLevelAncestor().repaint();
@@ -172,7 +172,7 @@ public class MainPanel extends JPanel {
             public void actionPerformed(ActionEvent e) {
 
                 selectedItem2 = (Variable) secondselectedVariable.getSelectedItem();
-                drawingScatterPlot.setVariable2(selectedItem2);
+                drawingScatterPlotPanel.setVariable2(selectedItem2);
                 histogramModelYValue = new HistogramModel(selectedItem2);
                 drawingPanelY.setAxis(histogramModelYValue);
                 getTopLevelAncestor().repaint();

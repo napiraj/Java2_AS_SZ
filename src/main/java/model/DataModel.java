@@ -8,8 +8,6 @@ public class DataModel {
 
     private ArrayList<Variable> variables;
 
-   /* public DataModel(Variable variable){
-    }*/
 
     public  DataModel(ArrayList<Variable> variables){
         this.variables = variables;

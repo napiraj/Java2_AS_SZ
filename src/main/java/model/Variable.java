@@ -14,13 +14,7 @@ public class Variable {
         this.values = new ArrayList<Double>();
     }
 
-   /* public Variable(String name, ArrayList<Double> valueVariable) {
-
-        this.name= name;
-        this.values= valueVariable;
-    } */
-
-    public void setValues(ArrayList<Double> values){
+     public void setValues(ArrayList<Double> values){
         this.values = values;
     }
 

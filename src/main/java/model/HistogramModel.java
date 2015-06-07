@@ -29,72 +29,65 @@ public class HistogramModel {
         this.values1 = varHistogram.getValues();
 
 
-
-        this.countClasses=Math.round((Math.sqrt(values1.size())));
+        this.countClasses = Math.round((Math.sqrt(values1.size())));
 
         // round up
-        double diffMaxMin =Math.ceil(varHistogram.getMax() - varHistogram.getMin());
-        double lowerLimitOfClass=varHistogram.getMin();
+        double diffMaxMin = Math.ceil(varHistogram.getMax() - varHistogram.getMin());
+        double lowerLimitOfClass = varHistogram.getMin();
         double upperLimitOfClass;
-        double realClassWidth=diffMaxMin /countClasses;
-        int counter=0;
+        double realClassWidth = diffMaxMin / countClasses;
+        int counter = 0;
 
-            int a=0;
+        int a = 0;
 
-        for(int i=0; i< countClasses;i++){
-            upperLimitOfClass = lowerLimitOfClass+realClassWidth+0.01;
-            lowerLimitOfClass=lowerLimitOfClass-0.01;
+        for (int i = 0; i < countClasses; i++) {
+            upperLimitOfClass = lowerLimitOfClass + realClassWidth + 0.01;
+            lowerLimitOfClass = lowerLimitOfClass - 0.01;
 
-            while(a<(values1.size()) ){
+            while (a < (values1.size())) {
 
-                if((values1.get(a)<upperLimitOfClass) && (values1.get(a)>lowerLimitOfClass)){
-                counter++;
+                if ((values1.get(a) < upperLimitOfClass) && (values1.get(a) > lowerLimitOfClass)) {
+                    counter++;
                 }
                 a++;
 
             }
             counterValues.add(counter);
 
-            a=0;
-            counter=0;
+            a = 0;
+            counter = 0;
 
-            lowerLimitOfClass=upperLimitOfClass;
+            lowerLimitOfClass = upperLimitOfClass;
 
         }
     }
 
 
-    public double getCountClasses()
-    {
+    public double getCountClasses() {
         return countClasses;
     }
 
-    public String getNameOfHistogramVariable()
-    {
+    public String getNameOfHistogramVariable() {
         String nameOfHistogramVariable = varHistogram.getName();
         return nameOfHistogramVariable;
     }
 
-    public ArrayList<Integer> getCounterValues(){
+    public ArrayList<Integer> getCounterValues() {
         return this.counterValues;
 
     }
 
-    public double getHighestBar(){
-        double highestBar= counterValues.get(0);
+    public double getHighestBar() {
+        double highestBar = counterValues.get(0);
 
-        for (int i= 1; i<counterValues.size();i++) {
+        for (int i = 1; i < counterValues.size(); i++) {
             if (counterValues.get(i) > highestBar) {
-                highestBar =counterValues.get(i);
+                highestBar = counterValues.get(i);
 
             }
         }
 
         return highestBar;
     }
-
-    /*public ArrayList<Integer> allHistogramValues(){
-        return counterValues;
-    }*/
 
 }
